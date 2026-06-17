@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://cr1cf1v7nf8vc"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_6e1qk"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_jkuaq"]
+[ext_resource type="Resource" uid="uid://c25eby5xobyf2" path="res://Stage/data/Tunnels/Easy/EasyMiddleTopTunnel.tres" id="3_oh8ss"]
+[ext_resource type="Resource" uid="uid://bqo2k0typxltu" path="res://Stage/data/Tunnels/Easy/EasyTopBottomTunnel.tres" id="4_ouanv"]
+[ext_resource type="Resource" uid="uid://cuchw8oc6k7hg" path="res://Stage/data/Tunnels/Easy/EasyBottomMiddleTunnel.tres" id="5_8x5ln"]
+[ext_resource type="Resource" uid="uid://dh5wwettqug51" path="res://Stage/data/Tunnels/Easy/EasyMiddleBottomTunnel.tres" id="6_2t7ck"]
+[ext_resource type="Resource" uid="uid://2y3ens2gf6kb" path="res://Stage/data/Tunnels/Easy/EasyBottomTopTunnel.tres" id="7_5i0oi"]
+
+[resource]
+script = ExtResource("1_6e1qk")
+waves = Array[ExtResource("2_jkuaq")]([ExtResource("3_oh8ss"), ExtResource("4_ouanv"), ExtResource("5_8x5ln"), ExtResource("6_2t7ck"), ExtResource("7_5i0oi"), ExtResource("4_ouanv"), ExtResource("7_5i0oi")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

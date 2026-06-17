@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://7nntmb7b3pbs"]
+
+[ext_resource type="Script" uid="uid://b8h13r8oq8x8a" path="res://Enity/Bonuses/DestoroyAllBonus/destroy_all_bonus.gd" id="1_6u7te"]
+[ext_resource type="Texture2D" uid="uid://c1sdaqtci6up4" path="res://Enity/Bonuses/Arts/bonuses.png" id="1_voerb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u7te"]
+atlas = ExtResource("1_voerb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_voerb"]
+radius = 8.0
+
+[node name="DestroyAllBonus" type="Area2D"]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_6u7te")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6u7te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_voerb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://b7wt8j5y56f6j"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_pkbw3"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_7ocpr"]
+[ext_resource type="Resource" uid="uid://colgsljyvyolh" path="res://Stage/data/Waves/Learning/LearningEasyWave.tres" id="3_mhdka"]
+[ext_resource type="Resource" uid="uid://chs8gvo5j1t3a" path="res://Stage/data/Waves/Pause/PauseEasySpeedWave.tres" id="4_3eias"]
+[ext_resource type="Resource" uid="uid://cm6kv7n3pqoc4" path="res://Stage/data/Waves/Learning/LearningMediumWave.tres" id="5_xf375"]
+[ext_resource type="Resource" uid="uid://ba0oxebs2w6bi" path="res://Stage/data/Waves/Pause/PauseMediumSpeedWave.tres" id="6_siktx"]
+[ext_resource type="Resource" uid="uid://cyfqbp0w776ag" path="res://Stage/data/Waves/Learning/LearningHardWave.tres" id="7_hhm6t"]
+[ext_resource type="Resource" uid="uid://dar7e1d3kesib" path="res://Stage/data/Waves/Pause/PauseHardSpeedWave.tres" id="8_f25b7"]
+
+[resource]
+script = ExtResource("1_pkbw3")
+waves = Array[ExtResource("2_7ocpr")]([ExtResource("3_mhdka"), ExtResource("4_3eias"), ExtResource("5_xf375"), ExtResource("6_siktx"), ExtResource("7_hhm6t"), ExtResource("8_f25b7")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

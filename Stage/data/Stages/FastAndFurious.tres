@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://dk7p8j726313t"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_xuwoj"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_v2aev"]
+[ext_resource type="Resource" uid="uid://crurv7t277a4j" path="res://Stage/data/Waves/FastAndFourious/FastAndFouriousWave.tres" id="3_xqu88"]
+[ext_resource type="Resource" uid="uid://c4uop2abuwcgv" path="res://Stage/data/Waves/Pause/PauseHardShortSpeetWave.tres" id="4_0d1h2"]
+[ext_resource type="Resource" uid="uid://cv1rg31i8387i" path="res://Stage/data/Waves/FastAndFourious/FastAndFouriousShortWave.tres" id="5_cacs3"]
+[ext_resource type="Resource" uid="uid://cgjf6pdft36m" path="res://Stage/data/Waves/Bullet/BulletShortWave.tres" id="6_53hhe"]
+
+[resource]
+script = ExtResource("1_xuwoj")
+waves = Array[ExtResource("2_v2aev")]([ExtResource("3_xqu88"), ExtResource("4_0d1h2"), ExtResource("3_xqu88"), ExtResource("4_0d1h2"), ExtResource("5_cacs3"), ExtResource("6_53hhe"), ExtResource("5_cacs3"), ExtResource("4_0d1h2")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

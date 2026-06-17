@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8jbdojqw237l"]
+
+[ext_resource type="Script" uid="uid://ckqrx1b13henc" path="res://Enity/Bonuses/UntochableBonus/untouchable_bonus.gd" id="1_a4l2u"]
+[ext_resource type="Texture2D" uid="uid://c1sdaqtci6up4" path="res://Enity/Bonuses/Arts/bonuses.png" id="1_gkbg2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4l2u"]
+atlas = ExtResource("1_gkbg2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7ahl"]
+radius = 8.0
+
+[node name="UntouchableBonus" type="Area2D"]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_a4l2u")
+metadata/_custom_type_script = "uid://d365mkryukwo6"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_a4l2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v7ahl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

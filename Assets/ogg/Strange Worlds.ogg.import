@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwy1fxtq2rlvd"
+path="res://.godot/imported/Strange Worlds.ogg-17d76bdac91f15aaeab5310c7dca9e00.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/ogg/Strange Worlds.ogg"
+dest_files=["res://.godot/imported/Strange Worlds.ogg-17d76bdac91f15aaeab5310c7dca9e00.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

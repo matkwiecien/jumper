@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://db1e6rmws6jfc"
+path="res://.godot/imported/Enemy Approaches.ogg-1e25ca8cd7cefef1e286413451b52278.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Enemy Approaches.ogg"
+dest_files=["res://.godot/imported/Enemy Approaches.ogg-1e25ca8cd7cefef1e286413451b52278.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

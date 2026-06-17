@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b04k2c2mwl0mr"]
+
+[ext_resource type="Script" uid="uid://brtpinbng5eu0" path="res://ui/WinPanel/FlowersSummary/flowers_summary.gd" id="1_rih8i"]
+[ext_resource type="PackedScene" uid="uid://130mbw2r3l07" path="res://ui/WinPanel/FlowersSummary/FlowerIcon/FlowerIcon.tscn" id="2_dry0o"]
+
+[node name="FlowersSummary" type="HBoxContainer" unique_id=270714495]
+alignment = 1
+script = ExtResource("1_rih8i")
+
+[node name="FlowerIcon" parent="." unique_id=932463687 instance=ExtResource("2_dry0o")]
+layout_mode = 2
+
+[node name="FlowerIcon2" parent="." unique_id=795633504 instance=ExtResource("2_dry0o")]
+layout_mode = 2
+
+[node name="FlowerIcon3" parent="." unique_id=1368014073 instance=ExtResource("2_dry0o")]
+layout_mode = 2

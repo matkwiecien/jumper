@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dmkq2dcm7to8c"]
+
+[ext_resource type="Script" uid="uid://bq7cgdeygpseq" path="res://ui/GameProgress/game_progress.gd" id="1_4usqf"]
+
+[node name="GameProgress" type="ProgressBar" unique_id=511945595]
+offset_right = 77.0
+offset_bottom = 27.0
+show_percentage = false
+script = ExtResource("1_4usqf")

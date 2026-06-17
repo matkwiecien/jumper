@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://drif6kohyhfuw"]
+
+[ext_resource type="Script" uid="uid://b7muy8fdqgqmm" path="res://Enity/Player/player.gd" id="1_prj6m"]
+[ext_resource type="Texture2D" uid="uid://qsxqqrfhbhy3" path="res://Enity/Player/Art/player.png" id="2_prj6m"]
+[ext_resource type="PackedScene" uid="uid://cls8lnaealjup" path="res://Enity/Player/Components/FlyComponent/FlyComponent.tscn" id="3_vqy1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prj6m"]
+atlas = ExtResource("2_prj6m")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqy1r"]
+atlas = ExtResource("2_prj6m")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lwxkw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prj6m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqy1r")
+}],
+"loop": true,
+"name": &"idle_ghost",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqy1r"]
+radius = 2.1213202
+height = 14.142138
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1eate"]
+radius = 3.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D" unique_id=45553832 groups=["player"]]
+collision_layer = 33
+collision_mask = 22
+script = ExtResource("1_prj6m")
+
+[node name="Timers" type="Node" parent="." unique_id=2026593181]
+
+[node name="IntouchableTimer" type="Timer" parent="Timers" unique_id=516957754]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1835269018]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_lwxkw")
+animation = &"idle_ghost"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=212478590]
+position = Vector2(-2.0000002, -5)
+rotation = -0.7853982
+shape = SubResource("CapsuleShape2D_vqy1r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2118280590]
+position = Vector2(4, -8)
+shape = SubResource("CapsuleShape2D_1eate")
+
+[node name="FlyComponent" parent="." unique_id=309289592 node_paths=PackedStringArray("player") instance=ExtResource("3_vqy1r")]
+fly_max_speed = 250.0
+player = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1167039656]
+rect = Rect2(-8, -16, 16, 16)
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="timeout" from="Timers/IntouchableTimer" to="." method="_on_player_intouchable_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_player_out_of_screen"]

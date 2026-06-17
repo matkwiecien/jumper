@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cm7nqjtgby2rx"]
+
+[ext_resource type="Script" uid="uid://clrivv40smik1" path="res://Enity/Bonuses/HealBonus/heal_bonus.gd" id="1_vdwm5"]
+[ext_resource type="Texture2D" uid="uid://c1sdaqtci6up4" path="res://Enity/Bonuses/Arts/bonuses.png" id="2_xgq4m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrm3e"]
+atlas = ExtResource("2_xgq4m")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bibpy"]
+radius = 8.0
+
+[node name="HealBonus" type="Area2D" unique_id=184841522]
+collision_mask = 32
+script = ExtResource("1_vdwm5")
+metadata/_custom_type_script = "uid://d365mkryukwo6"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1772230189]
+texture = SubResource("AtlasTexture_qrm3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663783748]
+shape = SubResource("CircleShape2D_bibpy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

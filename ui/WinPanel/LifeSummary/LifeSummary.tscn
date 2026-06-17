@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bjuyel1it37w8"]
+
+[ext_resource type="Script" uid="uid://5l7ulvjutc5q" path="res://ui/WinPanel/LifeSummary/life_summary.gd" id="1_mxuht"]
+[ext_resource type="PackedScene" uid="uid://bv3sak1iot5x4" path="res://ui/WinPanel/LifeSummary/LifeIcon/LifeIcon.tscn" id="2_vmqh1"]
+
+[node name="LifeSummary" type="HBoxContainer" unique_id=312467933]
+offset_right = 8.0
+alignment = 1
+script = ExtResource("1_mxuht")
+
+[node name="LifeIcon3" parent="." unique_id=371626610 instance=ExtResource("2_vmqh1")]
+layout_mode = 2
+
+[node name="LifeIcon2" parent="." unique_id=764409121 instance=ExtResource("2_vmqh1")]
+layout_mode = 2
+
+[node name="LifeIcon" parent="." unique_id=1362367015 instance=ExtResource("2_vmqh1")]
+layout_mode = 2

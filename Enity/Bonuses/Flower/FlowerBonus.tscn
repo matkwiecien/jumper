@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://clcqxphoes74"]
+
+[ext_resource type="Script" uid="uid://c25oudausvof1" path="res://Enity/Bonuses/Flower/flower_bonus.gd" id="1_d5p6m"]
+[ext_resource type="Texture2D" uid="uid://c1sdaqtci6up4" path="res://Enity/Bonuses/Arts/bonuses.png" id="2_mt820"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeip0"]
+atlas = ExtResource("2_mt820")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qegyq"]
+radius = 8.0
+
+[node name="FlowerBonus" type="Area2D" unique_id=143436607]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_d5p6m")
+metadata/_custom_type_script = "uid://d365mkryukwo6"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2115674828]
+texture = SubResource("AtlasTexture_yeip0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240179381]
+shape = SubResource("CircleShape2D_qegyq")

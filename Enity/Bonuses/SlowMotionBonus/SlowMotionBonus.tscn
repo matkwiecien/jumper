@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvk2nnrd6amwg"]
+
+[ext_resource type="Script" uid="uid://b1dxydy8yuxop" path="res://Enity/Bonuses/SlowMotionBonus/slow_motion_bonus.gd" id="1_no4e1"]
+[ext_resource type="Texture2D" uid="uid://c1sdaqtci6up4" path="res://Enity/Bonuses/Arts/bonuses.png" id="2_c13pl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5men1"]
+atlas = ExtResource("2_c13pl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_no4e1"]
+radius = 8.0
+
+[node name="SlowMotionBonus" type="Area2D"]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_no4e1")
+metadata/_custom_type_script = "uid://d365mkryukwo6"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_5men1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_no4e1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

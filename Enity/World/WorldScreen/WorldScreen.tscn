@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://irhhfk2gix88"]
+
+[ext_resource type="PackedScene" uid="uid://uxyt1kajo8n5" path="res://Enity/World/WorldScreen/BossTimer/BossTimer.tscn" id="2_intmn"]
+[ext_resource type="Texture2D" uid="uid://d0rhnmgn46u68" path="res://Enity/World/WorldScreen/Art/foreground-border-repeat.png" id="2_u46p2"]
+[ext_resource type="PackedScene" uid="uid://clceq3u4ny6ws" path="res://Enity/World/WorldScreen/BlockBranch/BlockBranch.tscn" id="3_iofku"]
+
+[sub_resource type="GDScript" id="GDScript_iofku"]
+script/source = "extends Node2D
+class_name WorldScreen
+ 
+signal screen_exited()
+
+var enemies: Array[Killer] = []
+var player: Player
+var camera: Camera2D
+var _boss: Boss
+var bossAvailability: BossAvailability = null
+var camera_default_top_limit: float
+
+var boss_fight_started = false
+@onready var enemy_container: Node2D = $EnemyContainer
+@onready var block_branch: BlockBranch = $BlockBranch
+@onready var boss_timer: BossTimer = $CanvasLayer/Control/BossTimer
+
+
+func _physics_process(_delta: float) -> void:
+	var top_line = global_position.y
+	var camera_center_point = get_viewport().get_camera_2d().get_screen_center_position() 
+	var camera_bottom_line = camera_center_point.y + 180
+	if camera_bottom_line < top_line:	
+		screen_exited.emit()
+	
+	var bottom_line = global_position.y + 360
+	if _boss and player.global_position.y < 	bottom_line and not boss_fight_started:
+		_boss.set_physics_process(true)
+		boss_fight_started = true
+		boss_timer.load_boss_settings(bossAvailability)
+		
+	if boss_fight_started:
+		camera.limit_bottom = move_toward(camera.limit_bottom, bottom_line, _delta * 20)
+	
+func remove_enemies():		
+	for enemy in enemies:
+		enemy.queue_free()
+		
+	enemies.clear()
+	
+func create_enemies(enemy_availabilities: Array[Occurence]):
+	var current_height = abs(global_position.y)
+	
+	for enemy_availability in enemy_availabilities:			
+		if current_height > enemy_availability.min_height:
+			for i in enemy_availability.get_number_height(current_height):				
+				var created_enemies = enemy_availability.spawning.spawn(enemy_container, Rect2(Vector2(0, 0), Vector2(640, 360)))
+				enemies.append_array(created_enemies)
+	
+	
+func create_boss_screen(bosses: Array[BossAvailability]):
+	var screen_bottom_height = global_position.y + 360
+	var screen_top_height = global_position.y
+	
+	for boss in bosses:
+		var boss_height = -boss.height
+		
+		if boss_height <= screen_bottom_height  and boss_height >=  screen_top_height:
+			var created_boss = boss.boss_scene.instantiate()
+			created_boss.target = player
+			enemy_container.add_child(created_boss)
+			created_boss.position.x = 180
+			created_boss.position.y = 60	
+			
+			_boss = created_boss
+			_boss.set_physics_process(false)
+			bossAvailability = boss
+			camera_default_top_limit = camera.limit_top
+			camera.limit_top = screen_top_height
+			boss_timer.timeout.connect(boss_fight_end)
+			block_exit()
+			
+func block_exit():
+	block_branch.block_entry()
+
+	
+func boss_fight_end():
+	_boss.run_away = true
+	_boss = null
+	block_branch.open_exit()
+	camera.limit_top = camera_default_top_limit
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24m64"]
+size = Vector2(59.5, 360.5)
+
+[node name="WorldScreen" type="Node2D"]
+z_index = 10
+script = SubResource("GDScript_iofku")
+
+[node name="BlockBranch" parent="." instance=ExtResource("3_iofku")]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u46p2")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(30.5, 179.5)
+shape = SubResource("RectangleShape2D_24m64")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(612.75, 179.75)
+shape = SubResource("RectangleShape2D_24m64")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BossTimer" parent="CanvasLayer/Control" instance=ExtResource("2_intmn")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0

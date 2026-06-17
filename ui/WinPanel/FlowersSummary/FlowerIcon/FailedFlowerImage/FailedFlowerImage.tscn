@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://tp30yacjldm3"]
+
+[ext_resource type="Texture2D" uid="uid://dbscgekjuxw3f" path="res://ui/Arts/icons.png" id="1_f4xe6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecjqd"]
+atlas = ExtResource("1_f4xe6")
+region = Rect2(16, 16, 16, 16)
+margin = Rect2(0.5, -0.5, 0, 0)
+
+[node name="FailedFlowerImage" type="TextureRect" unique_id=1172049592]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ecjqd")

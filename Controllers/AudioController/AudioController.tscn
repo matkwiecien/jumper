@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ru6h837ew4sd"]
+
+[ext_resource type="Script" uid="uid://kqg4tsdbs48c" path="res://Controllers/AudioController/audio_controller.gd" id="1_chtim"]
+[ext_resource type="AudioStream" uid="uid://dl74k05ksagj5" path="res://Assets/ogg/Pineapple Under The Sea.ogg" id="1_po36b"]
+[ext_resource type="AudioStream" uid="uid://hu1o5hojf7wh" path="res://Enity/Player/Art/tennis_ball_bounce_1.wav" id="2_chtim"]
+[ext_resource type="AudioStream" uid="uid://bbfbervks6otk" path="res://Enity/Player/Art/swipe.wav" id="3_72e70"]
+[ext_resource type="AudioStream" uid="uid://dutdh1xxr4cco" path="res://Enity/Bonuses/Arts/wood_small_pickup.wav" id="5_72e70"]
+[ext_resource type="AudioStream" uid="uid://4jiufd1cgq7w" path="res://Enity/Enemy/Arts/PUNCH_DESIGNED_HEAVY_23.wav" id="6_3udx5"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_chtim")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_po36b")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_chtim")
+pitch_scale = 1.7
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_72e70")
+pitch_scale = 1.7
+
+[node name="Collect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_72e70")
+pitch_scale = 1.7
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3udx5")

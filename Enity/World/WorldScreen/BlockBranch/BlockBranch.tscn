@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://clceq3u4ny6ws"]
+
+[ext_resource type="Texture2D" uid="uid://cvtxsduqu33hr" path="res://Enity/World/WorldScreen/Art/block-branch.png" id="1_1umss"]
+[ext_resource type="Script" uid="uid://fjt6xwq58vg1" path="res://Enity/World/WorldScreen/BlockBranch/block_branch.gd" id="1_s3r3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3r3b"]
+size = Vector2(640, 32)
+
+[node name="BlockBranch" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_s3r3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 0)
+texture = ExtResource("1_1umss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(320, 0.5)
+shape = SubResource("RectangleShape2D_s3r3b")

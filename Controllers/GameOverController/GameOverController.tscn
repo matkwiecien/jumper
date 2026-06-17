@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxyby0omg4cj5"]
+
+[ext_resource type="Script" uid="uid://begqp331qb3vw" path="res://Controllers/GameOverController/game_over_controller.gd" id="1_rqkxh"]
+
+[node name="GameOverController" type="Node2D"]
+script = ExtResource("1_rqkxh")
+game_over_scene = &"uid://coaf2g6l6x7ye"

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://fywepodkk5hi"]
+
+[ext_resource type="PackedScene" uid="uid://dlbidoniyal2e" path="res://Enity/World/WorldScreen/WorldStartScreen/WorldStartScreen.tscn" id="2_5qppc"]
+
+[node name="World" type="Node2D" unique_id=759107012]
+
+[node name="WorldStartScreen" parent="." unique_id=302181844 instance=ExtResource("2_5qppc")]
+
+[node name="WaveTimer" type="Timer" parent="." unique_id=1059908798]
+one_shot = true
+
+[node name="InitWavesTime" type="Timer" parent="." unique_id=934654963]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="WaveTimer" to="." method="next_wave"]
+[connection signal="timeout" from="InitWavesTime" to="." method="init_waves"]

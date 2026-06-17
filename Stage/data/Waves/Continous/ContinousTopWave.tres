@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WaveStrategy" format=3 uid="uid://cr7ists7iwm8i"]
+
+[ext_resource type="PackedScene" uid="uid://cvj8brlqxscjs" path="res://Enity/Enemy/Insects/Ladybird/Ladybird.tscn" id="1_tsiwn"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_xa4hq"]
+
+[resource]
+script = ExtResource("2_xa4hq")
+time_between_waves_min = 0.05
+time_between_waves_max = 0.05
+valid_y_start = 170.0
+enemy_scene = ExtResource("1_tsiwn")
+gap = 0.0
+wave_time = 5.0
+params_maximization_time = 5.0
+start_speed = 400.0
+end_speed = 400.0
+max_y_shift = 32.0
+metadata/_custom_type_script = "uid://c3i2dphfwylh5"

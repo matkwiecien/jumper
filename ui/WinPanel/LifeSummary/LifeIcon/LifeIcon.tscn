@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bv3sak1iot5x4"]
+
+[ext_resource type="Script" uid="uid://oupqvtqkryuh" path="res://ui/WinPanel/LifeSummary/LifeIcon/life_icon.gd" id="1_ev4mh"]
+[ext_resource type="PackedScene" uid="uid://qsys3a1xu4bw" path="res://ui/WinPanel/LifeSummary/LifeIcon/LostLifeIcon/LostLifeIcon.tscn" id="2_wluxm"]
+[ext_resource type="PackedScene" uid="uid://cwxe8m6cgk2yl" path="res://ui/WinPanel/LifeSummary/LifeIcon/SuccessLifeIcon/SuccessLifeIcon.tscn" id="3_fkf2i"]
+
+[node name="LifeIcon" type="Control" unique_id=1454962718]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_ev4mh")
+
+[node name="LostLifeIcon" parent="." unique_id=14861828 instance=ExtResource("2_wluxm")]
+layout_mode = 0
+anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SuccessLifeIcon" parent="." unique_id=1979734088 instance=ExtResource("3_fkf2i")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WaveWithBottomFilled" format=3 uid="uid://coxbqwi4nersj"]
+
+[ext_resource type="PackedScene" uid="uid://cvj8brlqxscjs" path="res://Enity/Enemy/Insects/Ladybird/Ladybird.tscn" id="1_qlqul"]
+[ext_resource type="Script" uid="uid://dtuwu0yusqq37" path="res://Enity/Enemy/Waves/strategies/waves_with_bottom_filled.gd" id="2_cweac"]
+
+[resource]
+script = ExtResource("2_cweac")
+bottom_wave_density = 16.0
+time_between_waves_min = 1.1
+time_between_waves_max = 1.0
+enemy_scene = ExtResource("1_qlqul")
+enemy_height = 16
+gap = 100.0
+wave_time = 30.0
+params_maximization_time = 30.0
+start_speed = 275.0
+end_speed = 300.0
+metadata/_custom_type_script = "uid://dtuwu0yusqq37"

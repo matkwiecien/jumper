@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://ca4ixnl8yy2x1"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_mnmxb"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_r6k6m"]
+[ext_resource type="Resource" uid="uid://br4jm7omupx2l" path="res://Stage/data/Waves/Relax/RelaxThroughGapWave.tres" id="3_uq6im"]
+[ext_resource type="Resource" uid="uid://dar7e1d3kesib" path="res://Stage/data/Waves/Pause/PauseHardSpeedWave.tres" id="4_qy0ic"]
+[ext_resource type="Resource" uid="uid://buqk0p6gg22r1" path="res://Stage/data/Waves/Relax/RelaxThroughGapShortWave.tres" id="5_4wpxy"]
+[ext_resource type="Resource" uid="uid://cgjf6pdft36m" path="res://Stage/data/Waves/Bullet/BulletShortWave.tres" id="6_6rgwl"]
+[ext_resource type="Resource" uid="uid://coxbqwi4nersj" path="res://Stage/data/Waves/Bullet/BulletWave.tres" id="7_pomnk"]
+
+[resource]
+script = ExtResource("1_mnmxb")
+waves = Array[ExtResource("2_r6k6m")]([ExtResource("3_uq6im"), ExtResource("4_qy0ic"), ExtResource("5_4wpxy"), ExtResource("4_qy0ic"), ExtResource("6_6rgwl"), ExtResource("5_4wpxy"), ExtResource("7_pomnk"), ExtResource("4_qy0ic"), ExtResource("6_6rgwl")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

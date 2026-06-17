@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dlbidoniyal2e"]
+
+[ext_resource type="Texture2D" uid="uid://byq71r8123h2p" path="res://Enity/World/WorldScreen/WorldStartScreen/Art/foreground-border.png" id="1_k8krn"]
+[ext_resource type="Texture2D" uid="uid://dmslgwgi7cywc" path="res://Enity/World/WorldScreen/Art/grass.png" id="2_7q08x"]
+[ext_resource type="PackedScene" uid="uid://clceq3u4ny6ws" path="res://Enity/World/WorldScreen/BlockBranch/BlockBranch.tscn" id="3_ol27u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwvuc"]
+size = Vector2(579, 12.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q08x"]
+size = Vector2(48, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol27u"]
+size = Vector2(63, 359)
+
+[node name="WorldStartScreen" type="Node2D" unique_id=911469147]
+
+[node name="BlockBranch" parent="." unique_id=584770873 instance=ExtResource("3_ol27u")]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=750966454]
+position = Vector2(0, 344)
+texture = ExtResource("2_7q08x")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1745248088]
+z_index = 10
+texture = ExtResource("1_k8krn")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=543988012]
+position = Vector2(0, 360)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1896140599]
+position = Vector2(352, -5.75)
+shape = SubResource("RectangleShape2D_uwvuc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=648809362]
+position = Vector2(0, 360)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=953745570]
+position = Vector2(613, -184)
+shape = SubResource("RectangleShape2D_7q08x")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=398156171]
+position = Vector2(5, 320)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1278209634]
+position = Vector2(26.5, -140.5)
+shape = SubResource("RectangleShape2D_ol27u")

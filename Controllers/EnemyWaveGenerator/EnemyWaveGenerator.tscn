@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://6wb4ev4vyh0r"]
+
+[ext_resource type="Script" uid="uid://c3tr6p3emiswk" path="res://Controllers/EnemyWaveGenerator/enemy_wave_generator.gd" id="1_n3adv"]
+
+[node name="EnemyWaveGenerator" type="Node2D" unique_id=990093254]
+script = ExtResource("1_n3adv")
+
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=1636481000]
+
+[node name="EnemyWaveTimer" type="Timer" parent="." unique_id=998276445]
+one_shot = true
+
+[node name="EnemyDestoryTimeoutTimer" type="Timer" parent="." unique_id=1928299798]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="EnemyWaveTimer" to="." method="_on_enemy_wave_timer_timeout"]
+[connection signal="timeout" from="EnemyDestoryTimeoutTimer" to="." method="remove_all_enemy"]

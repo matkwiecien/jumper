@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://qsys3a1xu4bw"]
+
+[ext_resource type="Texture2D" uid="uid://dbscgekjuxw3f" path="res://ui/Arts/icons.png" id="1_2i7k5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmnfb"]
+atlas = ExtResource("1_2i7k5")
+region = Rect2(0, 16, 16, 16)
+
+[node name="LostLifeIcon" type="TextureRect" unique_id=14861828]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bmnfb")

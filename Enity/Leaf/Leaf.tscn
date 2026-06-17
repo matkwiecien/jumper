@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://kr3143dk3yqo"]
+
+[ext_resource type="Script" uid="uid://drdpokqomdrya" path="res://Enity/Leaf/leaf.gd" id="1_33sn8"]
+[ext_resource type="Texture2D" uid="uid://c7huy8b3gge3" path="res://Enity/Leaf/Art/leaf.png" id="1_bqw1u"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_33sn8"]
+b = Vector2(32, -2)
+
+[sub_resource type="Animation" id="Animation_ht1ys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_33sn8"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(30, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.17453292519943295, -0.2617993877991494]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhmni"]
+_data = {
+&"RESET": SubResource("Animation_ht1ys"),
+&"new_animation": SubResource("Animation_33sn8")
+}
+
+[node name="Leaf" type="StaticBody2D" unique_id=1544241360]
+collision_layer = 2
+script = ExtResource("1_33sn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2054957256]
+position = Vector2(0, -4)
+texture = ExtResource("1_bqw1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=726424234]
+position = Vector2(-15, 1)
+shape = SubResource("SegmentShape2D_33sn8")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1379344240]
+libraries/ = SubResource("AnimationLibrary_dhmni")
+autoplay = &"new_animation"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2030764675]
+position = Vector2(0, -7)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1485199386]
+rect = Rect2(-16, -12, 32, 16)
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]

@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://do0765e5xxbnt"]
+
+[ext_resource type="Script" uid="uid://dnab6iwh7ij00" path="res://ui/WinPanel/win_panel.gd" id="1_1wcil"]
+[ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="1_sfh1y"]
+[ext_resource type="PackedScene" uid="uid://bjuyel1it37w8" path="res://ui/WinPanel/LifeSummary/LifeSummary.tscn" id="3_umfap"]
+
+[node name="WinPanel" type="Control" unique_id=36605198]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1wcil")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=516542358]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sfh1y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1809533025]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=555914087]
+layout_mode = 2
+text = "Stage completed"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="LifeSummary" parent="PanelContainer/VBoxContainer" unique_id=312467933 instance=ExtResource("3_umfap")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=107443960]
+layout_mode = 2
+alignment = 1
+
+[node name="NextButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer3" unique_id=927170962]
+layout_mode = 2
+theme = ExtResource("1_sfh1y")
+text = "Continue"
+
+[connection signal="visibility_changed" from="." to="PanelContainer/VBoxContainer/LifeSummary" method="_on_show"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer3/NextButton" to="." method="_on_next_button_pressed"]

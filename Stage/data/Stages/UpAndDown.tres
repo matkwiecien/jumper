@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://3l2fdheaegpb"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_ty7u7"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_rvqut"]
+[ext_resource type="Resource" uid="uid://cp5gquv753r0h" path="res://Stage/data/Impulses/UpDownImpulses.tres" id="3_w71cb"]
+[ext_resource type="Resource" uid="uid://d4hr8s7idkf6r" path="res://Stage/data/Impulses/UpDownFastImpulses.tres" id="4_rvqut"]
+[ext_resource type="Resource" uid="uid://jlpxofumr5x6" path="res://Stage/data/Impulses/UpDownExtremeImpulses.tres" id="5_w71cb"]
+[ext_resource type="Resource" uid="uid://0m5isrokb60e" path="res://Stage/data/Waves/Continous/ContinousBottomWave.tres" id="6_c5xea"]
+[ext_resource type="Resource" uid="uid://cr7ists7iwm8i" path="res://Stage/data/Waves/Continous/ContinousTopWave.tres" id="7_bwljp"]
+
+[resource]
+script = ExtResource("1_ty7u7")
+waves = Array[ExtResource("2_rvqut")]([ExtResource("3_w71cb"), ExtResource("4_rvqut"), ExtResource("5_w71cb"), ExtResource("6_c5xea"), ExtResource("7_bwljp"), ExtResource("6_c5xea"), ExtResource("7_bwljp"), ExtResource("6_c5xea"), ExtResource("6_c5xea"), ExtResource("7_bwljp"), ExtResource("6_c5xea"), ExtResource("5_w71cb"), ExtResource("7_bwljp"), ExtResource("7_bwljp"), ExtResource("5_w71cb"), ExtResource("6_c5xea"), ExtResource("6_c5xea"), ExtResource("7_bwljp"), ExtResource("7_bwljp"), ExtResource("5_w71cb")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

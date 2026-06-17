@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cme0qgmin6bc2"]
+
+[ext_resource type="Script" uid="uid://bsffj3b4w25gg" path="res://ui/MainMenu/main_menu.gd" id="1_yovl8"]
+[ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="2_405my"]
+[ext_resource type="Texture2D" uid="uid://bci3qji7ovsf8" path="res://ui/GameOverScreen/Art/game-over-background.png" id="2_hur4r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m4v60"]
+line_spacing = 1.0
+font_size = 32
+font_color = Color(0.32156864, 0.12941177, 0.09019608, 1)
+
+[node name="MainMenu" type="Control" unique_id=621624690]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yovl8")
+game_scene = &"uid://bkfjir0eytmri"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1753202386]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9985118, 0.99899244)
+texture = ExtResource("2_hur4r")
+expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1526222325]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -232.0
+offset_right = 210.0
+offset_bottom = -2.0
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=70290288]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=88266620]
+layout_mode = 2
+theme = ExtResource("2_405my")
+theme_override_colors/font_color = Color(0.32156864, 0.12941177, 0.09019608, 1)
+text = "Game Title"
+label_settings = SubResource("LabelSettings_m4v60")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=412719223]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=910597718]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NewGameBtn" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1839729045]
+layout_mode = 2
+theme = ExtResource("2_405my")
+text = "New game
+"
+alignment = 0
+
+[node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1390199437]
+layout_mode = 2
+theme = ExtResource("2_405my")
+text = "Continue
+"
+alignment = 0
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=992735179]
+layout_mode = 2
+theme = ExtResource("2_405my")
+text = "Options
+"
+alignment = 0
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2020618738]
+layout_mode = 2
+theme = ExtResource("2_405my")
+text = "Quit"
+alignment = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

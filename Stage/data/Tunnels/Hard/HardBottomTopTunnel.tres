@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TunnelStrategy" format=3 uid="uid://jsk8i4657bfy"]
+
+[ext_resource type="PackedScene" uid="uid://cvj8brlqxscjs" path="res://Enity/Enemy/Insects/Ladybird/Ladybird.tscn" id="1_y5ixc"]
+[ext_resource type="Script" uid="uid://bc6ypx806lbf4" path="res://Enity/Enemy/Waves/strategies/tunnel.gd" id="2_n4llc"]
+
+[resource]
+script = ExtResource("2_n4llc")
+gap_start_y_begining = 220.0
+gap_start_y_end = 0.0
+init_wave_delay_time = 0.1
+time_between_waves_min = 0.1
+time_between_waves_max = 0.1
+enemy_scene = ExtResource("1_y5ixc")
+enemy_height = 8
+gap = 140.0
+wave_time = 2.0
+start_speed = 200.0
+end_speed = 200.0
+metadata/_custom_type_script = "uid://bc6ypx806lbf4"

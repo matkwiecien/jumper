@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://d1dajujswdama"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_086g1"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_lp0ob"]
+[ext_resource type="Resource" uid="uid://bhkis5rkp1owk" path="res://Stage/data/Messes/FindPath/FindPathHardInMess.tres" id="3_cqxms"]
+[ext_resource type="Resource" uid="uid://euegpf440x6c" path="res://Stage/data/Messes/FindPath/FindPathMediumInMess.tres" id="3_lp0ob"]
+
+[resource]
+script = ExtResource("1_086g1")
+waves = Array[ExtResource("2_lp0ob")]([ExtResource("3_lp0ob"), ExtResource("3_cqxms")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://130mbw2r3l07"]
+
+[ext_resource type="PackedScene" uid="uid://do8fktom58i7k" path="res://ui/WinPanel/FlowersSummary/FlowerIcon/SuccessFlowerImage/SuccessFlowerImage.tscn" id="1_hm1rg"]
+[ext_resource type="Script" uid="uid://cqclo34w2b2pp" path="res://ui/WinPanel/FlowersSummary/FlowerIcon/flower_icon.gd" id="1_vq7ut"]
+[ext_resource type="PackedScene" uid="uid://tp30yacjldm3" path="res://ui/WinPanel/FlowersSummary/FlowerIcon/FailedFlowerImage/FailedFlowerImage.tscn" id="2_vq7ut"]
+
+[node name="FlowerIcon" type="Control" unique_id=932463687]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -624.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vq7ut")
+
+[node name="FailedFlowerIcon" parent="." unique_id=1172049592 instance=ExtResource("2_vq7ut")]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="SuccessFlowerIcon" parent="." unique_id=1936483904 instance=ExtResource("1_hm1rg")]
+visible = false
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0

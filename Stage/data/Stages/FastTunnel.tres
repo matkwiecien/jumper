@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://dc0enf3u6r6fr"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_4knbr"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_gadf2"]
+[ext_resource type="Resource" uid="uid://jsk8i4657bfy" path="res://Stage/data/Tunnels/Hard/HardBottomTopTunnel.tres" id="3_gadf2"]
+[ext_resource type="Resource" uid="uid://trswg3fth6fr" path="res://Stage/data/Tunnels/Hard/HardTopBottomTunnel.tres" id="4_gtvvu"]
+
+[resource]
+script = ExtResource("1_4knbr")
+waves = Array[ExtResource("2_gadf2")]([ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2"), ExtResource("4_gtvvu"), ExtResource("3_gadf2")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

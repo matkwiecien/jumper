@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cls8lnaealjup"]
+
+[ext_resource type="Script" uid="uid://bd8d22o6isn8e" path="res://Enity/Player/Components/FlyComponent/fly_component.gd" id="1_cttd5"]
+
+[node name="FlyComponent" type="Node2D" unique_id=2092001241]
+script = ExtResource("1_cttd5")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://do8fktom58i7k"]
+
+[ext_resource type="Texture2D" uid="uid://dbscgekjuxw3f" path="res://ui/Arts/icons.png" id="1_ply2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7mw8"]
+atlas = ExtResource("1_ply2l")
+region = Rect2(16, 0, 16, 16)
+margin = Rect2(0.5, -0.5, 0, 0)
+
+[node name="Flower" type="TextureRect" unique_id=1936483904]
+texture = SubResource("AtlasTexture_k7mw8")

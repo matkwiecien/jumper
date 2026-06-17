@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Stage" format=3 uid="uid://3ajxurp0lkqd"]
+
+[ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="1_8cbtu"]
+[ext_resource type="Script" uid="uid://c3i2dphfwylh5" path="res://Enity/Enemy/Waves/strategies/waves_strategy.gd" id="2_po522"]
+[ext_resource type="Resource" uid="uid://ca44fisyhucpx" path="res://Stage/data/Waves/Leaky/LeakyEasyWave.tres" id="3_po522"]
+[ext_resource type="Resource" uid="uid://d4hrsp4oiuaro" path="res://Stage/data/Waves/Leaky/LeakyMediumWave.tres" id="4_xnul8"]
+[ext_resource type="Resource" uid="uid://4uliwqdnmr8i" path="res://Stage/data/Waves/Leaky/LeakyHardWave.tres" id="5_uyvtf"]
+
+[resource]
+script = ExtResource("1_8cbtu")
+waves = Array[ExtResource("2_po522")]([ExtResource("3_po522"), ExtResource("4_xnul8"), ExtResource("3_po522"), ExtResource("4_xnul8"), ExtResource("3_po522"), ExtResource("5_uyvtf")])
+metadata/_custom_type_script = "uid://cgt05tnipliv"

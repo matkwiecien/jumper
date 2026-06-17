@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cwxe8m6cgk2yl"]
+
+[ext_resource type="Texture2D" uid="uid://dbscgekjuxw3f" path="res://ui/Arts/icons.png" id="1_5ccxu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umfap"]
+atlas = ExtResource("1_5ccxu")
+region = Rect2(0, 0, 16, 16)
+
+[node name="TextureRect" type="TextureRect" unique_id=1979734088]
+texture = SubResource("AtlasTexture_umfap")
