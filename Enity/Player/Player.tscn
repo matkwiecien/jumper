@@ -1,12 +1,25 @@
 [gd_scene format=3 uid="uid://drif6kohyhfuw"]
 
 [ext_resource type="Script" uid="uid://b7muy8fdqgqmm" path="res://Enity/Player/player.gd" id="1_prj6m"]
+[ext_resource type="Texture2D" uid="uid://blboi3q3yqj1s" path="res://Enity/Player/Art/butter-fly-with-anim-Sheet.png" id="2_lwxkw"]
 [ext_resource type="Texture2D" uid="uid://qsxqqrfhbhy3" path="res://Enity/Player/Art/player.png" id="2_prj6m"]
 [ext_resource type="PackedScene" uid="uid://cls8lnaealjup" path="res://Enity/Player/Components/FlyComponent/FlyComponent.tscn" id="3_vqy1r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_prj6m"]
-atlas = ExtResource("2_prj6m")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4thd4"]
+atlas = ExtResource("2_lwxkw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn5fw"]
+atlas = ExtResource("2_lwxkw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u54nu"]
+atlas = ExtResource("2_lwxkw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwxkw"]
+atlas = ExtResource("2_lwxkw")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqy1r"]
 atlas = ExtResource("2_prj6m")
@@ -16,7 +29,21 @@ region = Rect2(16, 16, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_prj6m")
+"texture": SubResource("AtlasTexture_4thd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn5fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u54nu")
+}],
+"loop": false,
+"name": &"fly",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwxkw")
 }],
 "loop": true,
 "name": &"idle",
@@ -54,7 +81,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1835269018]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_lwxkw")
-animation = &"idle_ghost"
+animation = &"fly"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=212478590]

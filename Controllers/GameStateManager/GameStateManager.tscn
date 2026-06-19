@@ -4,3 +4,7 @@
 
 [node name="GameStateManager" type="Node" unique_id=1159865182]
 script = ExtResource("1_lutya")
+
+[node name="DelayTimer" type="Timer" parent="." unique_id=1725979144]
+wait_time = 3.0
+one_shot = true

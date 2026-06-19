@@ -36,7 +36,7 @@ var disabled_moving: bool = false
 		
 func _physics_process(delta: float) -> void:	
 	
-	animated_sprite_2d.flip_h = direction == 1
+	animated_sprite_2d.flip_h = direction == -1
 	
 	if not disabled_moving:
 		_apply_move(delta)

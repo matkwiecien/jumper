@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://do0765e5xxbnt" path="res://ui/WinPanel/WinPanel.tscn" id="16_8myfo"]
 [ext_resource type="PackedScene" uid="uid://bjuyel1it37w8" path="res://ui/WinPanel/LifeSummary/LifeSummary.tscn" id="17_n1yqa"]
 [ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="18_beav1"]
-[ext_resource type="PackedScene" uid="uid://b04k2c2mwl0mr" path="res://ui/WinPanel/FlowersSummary/FlowersSummary.tscn" id="18_oyxvj"]
 [ext_resource type="Resource" uid="uid://b7wt8j5y56f6j" path="res://Stage/data/Stages/Tutorial.tres" id="19_26ipt"]
 [ext_resource type="Resource" uid="uid://ca4ixnl8yy2x1" path="res://Stage/data/Stages/Intervals.tres" id="20_c84y4"]
 [ext_resource type="Resource" uid="uid://dk7p8j726313t" path="res://Stage/data/Stages/FastAndFurious.tres" id="21_fotbt"]
@@ -112,11 +111,9 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 11
 
 [node name="LifeSummary" parent="CanvasLayer/Control/VBoxContainer" unique_id=312467933 instance=ExtResource("17_n1yqa")]
-layout_mode = 2
-
-[node name="FlowersSummary" parent="CanvasLayer/Control/VBoxContainer" unique_id=270714495 instance=ExtResource("18_oyxvj")]
 layout_mode = 2
 
 [node name="GameProgress" parent="CanvasLayer/Control" unique_id=511945595 instance=ExtResource("16_0chl7")]
@@ -125,13 +122,17 @@ offset_left = 67.0
 offset_right = 580.0
 offset_bottom = 5.0
 
-[node name="WinPanel" parent="CanvasLayer/Control" unique_id=36605198 instance=ExtResource("16_8myfo")]
+[node name="SatgeCompletedPopup" parent="CanvasLayer/Control" unique_id=36605198 instance=ExtResource("16_8myfo")]
 visible = false
 layout_mode = 1
+offset_left = 7.0
+offset_top = -126.0
+offset_right = 7.0
+offset_bottom = -126.0
 
 [connection signal="game_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_game_time_changed"]
 [connection signal="stage_stopped" from="GameNode/StageManager" to="GameNode/GameStateManager" method="_on_stage_stopped"]
 [connection signal="stage_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_stage_time_changed"]
 [connection signal="lifes_change" from="GameNode/Player" to="CanvasLayer/Control/VBoxContainer/LifeSummary" method="_update_lifes"]
 [connection signal="player_dead" from="GameNode/Player" to="GameNode/GameOverController" method="_on_game_over"]
-[connection signal="next_button_pressed" from="CanvasLayer/Control/WinPanel" to="GameNode/GameStateManager" method="_on_next_stage_clicked"]
+[connection signal="next_button_pressed" from="CanvasLayer/Control/SatgeCompletedPopup" to="GameNode/GameStateManager" method="_on_next_stage_clicked"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnab6iwh7ij00" path="res://ui/WinPanel/win_panel.gd" id="1_1wcil"]
 [ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="1_sfh1y"]
 [ext_resource type="PackedScene" uid="uid://bjuyel1it37w8" path="res://ui/WinPanel/LifeSummary/LifeSummary.tscn" id="3_umfap"]
+[ext_resource type="Texture2D" uid="uid://74uhr5vjfa3s" path="res://ui/Arts/Texts/game-texts.png" id="4_umfap"]
 
 [node name="WinPanel" type="Control" unique_id=36605198]
 layout_mode = 3
@@ -29,26 +30,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_sfh1y")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1809533025]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2100200998]
 layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=555914087]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1809533025]
 layout_mode = 2
-text = "Stage completed"
-horizontal_alignment = 1
-uppercase = true
+theme_override_constants/separation = 8
 
-[node name="LifeSummary" parent="PanelContainer/VBoxContainer" unique_id=312467933 instance=ExtResource("3_umfap")]
+[node name="LifeSummary" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=312467933 instance=ExtResource("3_umfap")]
 layout_mode = 2
+theme_override_constants/separation = 25
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=107443960]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=413306992]
 layout_mode = 2
-alignment = 1
+texture = ExtResource("4_umfap")
 
-[node name="NextButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer3" unique_id=927170962]
-layout_mode = 2
-theme = ExtResource("1_sfh1y")
-text = "Continue"
-
-[connection signal="visibility_changed" from="." to="PanelContainer/VBoxContainer/LifeSummary" method="_on_show"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer3/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="visibility_changed" from="." to="PanelContainer/MarginContainer/VBoxContainer/LifeSummary" method="_on_show"]

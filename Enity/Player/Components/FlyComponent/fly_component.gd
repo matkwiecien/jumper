@@ -15,7 +15,10 @@ var disabled_moving: bool = false
 func _physics_process(delta: float) -> void:
 	if _can_fly():
 		player.velocity.y = -fly_max_speed
+		player.animated_sprite_2d.stop()
+		player.animated_sprite_2d.play("fly")
 
+		
 
 func _can_fly() -> bool:	
 	var fly_pressed = Input.is_action_just_pressed("fly")
