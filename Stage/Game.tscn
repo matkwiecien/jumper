@@ -23,7 +23,9 @@
 [ext_resource type="Resource" uid="uid://b7wt8j5y56f6j" path="res://Stage/data/Stages/Tutorial.tres" id="19_26ipt"]
 [ext_resource type="Resource" uid="uid://ca4ixnl8yy2x1" path="res://Stage/data/Stages/Intervals.tres" id="20_c84y4"]
 [ext_resource type="Resource" uid="uid://dk7p8j726313t" path="res://Stage/data/Stages/FastAndFurious.tres" id="21_fotbt"]
+[ext_resource type="Texture2D" uid="uid://bmgp2cffaevtl" path="res://ui/Instructions/Art/restart_instruction-Sheet.png" id="22_jo1rj"]
 [ext_resource type="Texture2D" uid="uid://cmj0303tyukd4" path="res://ui/Instructions/Art/start_instruction-Sheet.png" id="22_ww05r"]
+[ext_resource type="PackedScene" uid="uid://di52bvcruplwy" path="res://ui/GameOverStagePopup/GameOverStagePopup.tscn" id="24_2nmls"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo1rj"]
 atlas = ExtResource("22_ww05r")
@@ -47,8 +49,31 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncq44"]
+atlas = ExtResource("22_jo1rj")
+region = Rect2(0, 0, 88, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8suk"]
+atlas = ExtResource("22_jo1rj")
+region = Rect2(88, 0, 88, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rh7m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncq44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8suk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="Game" type="Node" unique_id=369595640 node_paths=PackedStringArray("player")]
 script = ExtResource("1_pkj63")
+players_default_lifes = 1
 player = NodePath("GameNode/Player")
 wave_start_index = 5
 
@@ -91,11 +116,17 @@ peak_gravity = 800
 fall_gravity = 1200
 max_fall_speed = 320
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameNode" unique_id=1324090823]
+[node name="StartInstruction" type="AnimatedSprite2D" parent="GameNode" unique_id=1324090823]
 position = Vector2(329, 248)
 sprite_frames = SubResource("SpriteFrames_ncq44")
 autoplay = "default"
 frame_progress = 0.6543345
+
+[node name="RestartInstruction" type="AnimatedSprite2D" parent="GameNode" unique_id=1535551381]
+visible = false
+position = Vector2(329, 250)
+sprite_frames = SubResource("SpriteFrames_6rh7m")
+autoplay = "default"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1903625374]
 
@@ -104,6 +135,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 7.0
+offset_right = -4.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -122,6 +157,14 @@ offset_left = 67.0
 offset_right = 580.0
 offset_bottom = 5.0
 
+[node name="GameOverStagePopup" parent="CanvasLayer/Control" unique_id=1208923848 instance=ExtResource("24_2nmls")]
+visible = false
+layout_mode = 1
+offset_left = 8.0
+offset_top = -126.0
+offset_right = 8.0
+offset_bottom = -126.0
+
 [node name="SatgeCompletedPopup" parent="CanvasLayer/Control" unique_id=36605198 instance=ExtResource("16_8myfo")]
 visible = false
 layout_mode = 1
@@ -134,5 +177,5 @@ offset_bottom = -126.0
 [connection signal="stage_stopped" from="GameNode/StageManager" to="GameNode/GameStateManager" method="_on_stage_stopped"]
 [connection signal="stage_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_stage_time_changed"]
 [connection signal="lifes_change" from="GameNode/Player" to="CanvasLayer/Control/VBoxContainer/LifeSummary" method="_update_lifes"]
-[connection signal="player_dead" from="GameNode/Player" to="GameNode/GameOverController" method="_on_game_over"]
+[connection signal="player_dead" from="GameNode/Player" to="GameNode/GameStateManager" method="_on_player_dead"]
 [connection signal="next_button_pressed" from="CanvasLayer/Control/SatgeCompletedPopup" to="GameNode/GameStateManager" method="_on_next_stage_clicked"]

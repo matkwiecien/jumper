@@ -16,7 +16,11 @@ func _physics_process(delta: float) -> void:
 	if _can_fly():
 		player.velocity.y = -fly_max_speed
 		player.animated_sprite_2d.stop()
-		player.animated_sprite_2d.play("fly")
+		
+		if player.is_ghost:
+			player.animated_sprite_2d.play("fly_ghost")
+		else:
+			player.animated_sprite_2d.play("fly")
 
 		
 

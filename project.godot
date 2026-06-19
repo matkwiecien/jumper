@@ -26,11 +26,13 @@ Helpers="*res://utils/helpers.gd"
 SceneController="*res://Controllers/SceneController/scene_controller.gd"
 AudioController="*res://Controllers/AudioController/AudioController.tscn"
 SaveGameController="*uid://cph4j85tit487"
+SettingsController="*uid://bgrre4jw7tvnc"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 

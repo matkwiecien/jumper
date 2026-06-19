@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://cme0qgmin6bc2"]
 
 [ext_resource type="Script" uid="uid://bsffj3b4w25gg" path="res://ui/MainMenu/main_menu.gd" id="1_yovl8"]
+[ext_resource type="Texture2D" uid="uid://bwkxckq753sgk" path="res://Stage/Art/foreground.png" id="2_6lifw"]
 [ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="2_405my"]
-[ext_resource type="Texture2D" uid="uid://bci3qji7ovsf8" path="res://ui/GameOverScreen/Art/game-over-background.png" id="2_hur4r"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_m4v60"]
-line_spacing = 1.0
-font_size = 32
-font_color = Color(0.32156864, 0.12941177, 0.09019608, 1)
+[ext_resource type="Texture2D" uid="uid://bktwqkvm08tdr" path="res://Assets/Branding/game-title.png" id="3_66u0g"]
+[ext_resource type="Texture2D" uid="uid://chlbb35cnnscx" path="res://ui/Components/Buttons/Arts/new-game-btn.png" id="3_hur4r"]
+[ext_resource type="Texture2D" uid="uid://co7sgsx8lfea5" path="res://ui/Components/Buttons/Arts/continue-btn.png" id="4_wlwnj"]
+[ext_resource type="Texture2D" uid="uid://dhamh2v8bpquj" path="res://ui/Components/Buttons/Arts/new-game-btn-hover.png" id="5_5lojo"]
+[ext_resource type="Texture2D" uid="uid://yak0hm12kvcm" path="res://ui/Components/Buttons/Arts/focus-btn-overlay.png" id="5_7bcsq"]
+[ext_resource type="Texture2D" uid="uid://b3a8d48k2fmr8" path="res://ui/Components/Buttons/Arts/options-btn.png" id="5_16u2t"]
+[ext_resource type="Texture2D" uid="uid://csqcuvyxmot21" path="res://ui/Components/Buttons/Arts/quit-btn.png" id="6_6lifw"]
+[ext_resource type="Texture2D" uid="uid://bgf8rgahcafe8" path="res://ui/Components/Buttons/Arts/continue-btn-hover.png" id="8_0xady"]
+[ext_resource type="Texture2D" uid="uid://f1mglqisrvae" path="res://ui/Components/Buttons/Arts/continue-btn-focus.png" id="9_en2kh"]
+[ext_resource type="Texture2D" uid="uid://bekwgt4k5uked" path="res://ui/Components/Buttons/Arts/options-btn-hover.png" id="10_en2kh"]
+[ext_resource type="Texture2D" uid="uid://cm2ahva4wr1ai" path="res://ui/Components/Buttons/Arts/quit-btn-hover.png" id="12_0xady"]
+[ext_resource type="Texture2D" uid="uid://duy2amwox5i04" path="res://ui/Components/Buttons/Arts/options-btn-focus.png" id="12_iu4bf"]
+[ext_resource type="Texture2D" uid="uid://bcy614gk0qndk" path="res://ui/Components/Buttons/Arts/quit-btn-focus.png" id="15_56uxw"]
 
 [node name="MainMenu" type="Control" unique_id=621624690]
 layout_mode = 3
@@ -24,74 +32,76 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -140.0
-offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9985118, 0.99899244)
-texture = ExtResource("2_hur4r")
-expand_mode = 4
+texture = ExtResource("2_6lifw")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=671558533]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.5
+offset_right = 115.5
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 12
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer2" unique_id=1543806700]
+layout_mode = 2
+texture = ExtResource("3_66u0g")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1526222325]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -232.0
-offset_right = 210.0
-offset_bottom = -2.0
-grow_vertical = 0
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 48
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=70290288]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=88266620]
-layout_mode = 2
-theme = ExtResource("2_405my")
-theme_override_colors/font_color = Color(0.32156864, 0.12941177, 0.09019608, 1)
-text = "Game Title"
-label_settings = SubResource("LabelSettings_m4v60")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=412719223]
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=910597718]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=887010697]
+layout_mode = 2
+theme = ExtResource("2_405my")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer" unique_id=910597718]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="NewGameBtn" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1839729045]
+[node name="NewGameBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=422998161]
 layout_mode = 2
-theme = ExtResource("2_405my")
-text = "New game
-"
-alignment = 0
+texture_normal = ExtResource("3_hur4r")
+texture_hover = ExtResource("5_5lojo")
+texture_focused = ExtResource("5_7bcsq")
 
-[node name="ContinueBtn" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1390199437]
+[node name="ContinueBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1084426509]
 layout_mode = 2
-theme = ExtResource("2_405my")
-text = "Continue
-"
-alignment = 0
+texture_normal = ExtResource("4_wlwnj")
+texture_hover = ExtResource("8_0xady")
+texture_focused = ExtResource("9_en2kh")
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=992735179]
+[node name="OptionsBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=92781950]
 layout_mode = 2
-theme = ExtResource("2_405my")
-text = "Options
-"
-alignment = 0
+texture_normal = ExtResource("5_16u2t")
+texture_hover = ExtResource("10_en2kh")
+texture_focused = ExtResource("12_iu4bf")
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2020618738]
+[node name="ExitBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=863744290]
 layout_mode = 2
-theme = ExtResource("2_405my")
-text = "Quit"
-alignment = 0
+texture_normal = ExtResource("6_6lifw")
+texture_hover = ExtResource("12_0xady")
+texture_focused = ExtResource("15_56uxw")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_pressed"]

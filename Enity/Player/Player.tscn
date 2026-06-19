@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7muy8fdqgqmm" path="res://Enity/Player/player.gd" id="1_prj6m"]
 [ext_resource type="Texture2D" uid="uid://blboi3q3yqj1s" path="res://Enity/Player/Art/butter-fly-with-anim-Sheet.png" id="2_lwxkw"]
-[ext_resource type="Texture2D" uid="uid://qsxqqrfhbhy3" path="res://Enity/Player/Art/player.png" id="2_prj6m"]
+[ext_resource type="Texture2D" uid="uid://bqk8q02i85ogv" path="res://Enity/Player/Art/butter-fly-intouchable-Sheet.png" id="3_lwxkw"]
 [ext_resource type="PackedScene" uid="uid://cls8lnaealjup" path="res://Enity/Player/Components/FlyComponent/FlyComponent.tscn" id="3_vqy1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4thd4"]
@@ -17,13 +17,25 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_lwxkw")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmak0"]
+atlas = ExtResource("3_lwxkw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ot6"]
+atlas = ExtResource("3_lwxkw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ykgl"]
+atlas = ExtResource("3_lwxkw")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwxkw"]
 atlas = ExtResource("2_lwxkw")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqy1r"]
-atlas = ExtResource("2_prj6m")
-region = Rect2(16, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ighhr"]
+atlas = ExtResource("3_lwxkw")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lwxkw"]
 animations = [{
@@ -43,6 +55,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mmak0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62ot6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ykgl")
+}],
+"loop": true,
+"name": &"fly_ghost",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lwxkw")
 }],
 "loop": true,
@@ -51,7 +77,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vqy1r")
+"texture": SubResource("AtlasTexture_ighhr")
 }],
 "loop": true,
 "name": &"idle_ghost",
@@ -65,6 +91,42 @@ height = 14.142138
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1eate"]
 radius = 3.0
 height = 16.0
+
+[sub_resource type="Animation" id="Animation_lwxkw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4thd4"]
+resource_name = "player_dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.23325811, 0.3789292),
+"update": 0,
+"values": [0.0, -2.443460952792061]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn5fw"]
+_data = {
+&"RESET": SubResource("Animation_lwxkw"),
+&"player_dead": SubResource("Animation_4thd4")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=45553832 groups=["player"]]
 collision_layer = 33
@@ -81,7 +143,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1835269018]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_lwxkw")
-animation = &"fly"
+animation = &"fly_ghost"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=212478590]
@@ -99,6 +161,9 @@ player = NodePath("..")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1167039656]
 rect = Rect2(-8, -16, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1977545866]
+libraries/ = SubResource("AnimationLibrary_dn5fw")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

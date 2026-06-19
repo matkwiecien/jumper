@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bjuyel1it37w8" path="res://ui/WinPanel/LifeSummary/LifeSummary.tscn" id="3_umfap"]
 [ext_resource type="Texture2D" uid="uid://74uhr5vjfa3s" path="res://ui/Arts/Texts/game-texts.png" id="4_umfap"]
 
-[node name="WinPanel" type="Control" unique_id=36605198]
+[node name="StageCompletePopup" type="Control" unique_id=36605198]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

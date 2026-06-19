@@ -1,7 +1,7 @@
 extends Control
 
 @export var game_scene: StringName = &""
-@onready var new_game_btn: Button = $MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/NewGameBtn
+@onready var new_game_btn: TextureButton = $MarginContainer/VBoxContainer/MarginContainer/PanelContainer/VBoxContainer/NewGameBtn
 
 func _ready() -> void:
 	new_game_btn.grab_focus()

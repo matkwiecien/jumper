@@ -6,15 +6,21 @@ enum GAME_STATE {
 	WAIT_FOR_STAGE_END,
 	WAIT_FOR_ALL_ENEMY_BE_DESTROYED,
 	WAIT_FOR_PLAYER_TO_LAND,
+	WAIT_FOR_DEAD_PLAYER_TO_LAND,
+	GAME_OVER,
 }
 
 @onready var stage_manager: StageManager = $"../StageManager"
 @onready var enemy_wave_generator: EnemyWaveGenerator = $"../EnemyWaveGenerator"
 @onready var satge_completed_popup: Control = $"../../CanvasLayer/Control/SatgeCompletedPopup"
 @onready var player: Player = $"../Player"
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
+
+@onready var restart_instruction: AnimatedSprite2D = $"../RestartInstruction"
+@onready var start_instruction: AnimatedSprite2D = $"../StartInstruction"
 
 @onready var delay_timer: Timer = $DelayTimer
+
+@onready var game_over_stage_popup: Control = $"../../CanvasLayer/Control/GameOverStagePopup"
 
 var game_state: GAME_STATE = GAME_STATE.WAIT_FOR_PLAYER_TO_START
 
@@ -25,13 +31,19 @@ func is_waiting_for_player_to_land():
 	return game_state == GAME_STATE.WAIT_FOR_PLAYER_TO_LAND  
 	
 	
+func is_waiting_for_restart():
+	return game_state == GAME_STATE.GAME_OVER  
+	
 func  _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fly") and is_waiting_for_player_to_start():
 		game_state = GAME_STATE.WAIT_FOR_STAGE_END
 		stage_manager.start_stage()
-		animated_sprite_2d.hide()
+		start_instruction.hide()
 		satge_completed_popup.hide()
 		player.enable_move()
+		
+	if event.is_action_pressed("fly") and is_waiting_for_restart():
+		SceneController.load_scene('uid://bkfjir0eytmri')
 		
 		
 func _process(_delta: float) -> void:
@@ -43,6 +55,10 @@ func _process(_delta: float) -> void:
 		
 	if game_state == GAME_STATE.WAIT_FOR_PLAYER_TO_LAND and player.is_on_floor() and delay_timer.is_stopped():
 		_on_player_land_after_win()
+		
+	if game_state == GAME_STATE.WAIT_FOR_DEAD_PLAYER_TO_LAND and player.is_on_floor() and delay_timer.is_stopped():
+		_on_player_land_after_dead()
+		
 		
 func _on_stage_stopped():
 	game_state = GAME_STATE.WAIT_FOR_ALL_ENEMY_BE_DESTROYED
@@ -61,6 +77,17 @@ func _on_all_enemy_destroyed():
 func _on_player_land_after_win():	
 	game_state = GAME_STATE.WAIT_FOR_PLAYER_TO_START
 	player.enable_move()
-	animated_sprite_2d.show()
+	start_instruction.show()
 	
+func _on_player_dead() -> void:	
+	player.disable_move()
+	stage_manager.stop_stage()
+	enemy_wave_generator.stop()
+	game_state = GAME_STATE.WAIT_FOR_DEAD_PLAYER_TO_LAND
+
+
 	
+func _on_player_land_after_dead():	
+	game_state = GAME_STATE.GAME_OVER
+	game_over_stage_popup.show()
+	restart_instruction.show()

@@ -15,6 +15,7 @@ class_name Player extends CharacterBody2D
 @export var max_fall_speed = 300
 
 var direction = 1
+var is_ghost: bool = false
 
 signal lifes_change(lifes: int)
 var lifes: int = 1:
@@ -33,7 +34,8 @@ var disabled_moving: bool = false
 @onready var fly_component: FlyComponent = $FlyComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var intouchable_timer: Timer = $Timers/IntouchableTimer
-		
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 func _physics_process(delta: float) -> void:	
 	
 	animated_sprite_2d.flip_h = direction == -1
@@ -108,15 +110,22 @@ func _on_player_out_of_screen():
 	
 func hit():
 	lifes -= 1
-	intouchable_timer.start()
+	
 	set_collision_layer_value(1, false)
+	is_ghost = true
 	animated_sprite_2d.play("idle_ghost")
+	if lifes <= 0:
+		disable_move()
+		animation_player.play("player_dead")
+	else:
+		intouchable_timer.start()
 	
 func add_life():
 	lifes += 1
 	
 func _on_player_intouchable_timeout():
 	set_collision_layer_value(1, true)
+	is_ghost = false
 	animated_sprite_2d.play("idle")
 	
 func disable_move():
