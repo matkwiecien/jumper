@@ -1,20 +1,46 @@
 extends Node
 
-var settings =  ConfigFile.new()
+var config =  ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not FileAccess.file_exists(SETTINGS_FILE_PATH):
-		var current_mode = DisplayServer.window_get_mode()
-		settings.set_value("video", "fullscreen",  current_mode)
-		settings.save(SETTINGS_FILE_PATH)
+		config.set_value("video", "fullscreen",  DisplayServer.WINDOW_MODE_FULLSCREEN)
+		config.set_value("audio", "music_volume",  0.5)
+		config.set_value("audio", "sfx_volume",  0.5)
+		config.save(SETTINGS_FILE_PATH)
 	else:
-		settings.load(SETTINGS_FILE_PATH)
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		config.load(SETTINGS_FILE_PATH)
+	
 		
 func save_settings():
-	settings.save(SETTINGS_FILE_PATH)
+	config.save(SETTINGS_FILE_PATH)
 
 func get_window_mode():
-	return settings.get_value("video", "fullscreen")
+	return config.get_value("video", "fullscreen")
+
+func set_fullscreen(toggle_on: bool):
+	if toggle_on:
+		config.set_value("video", "fullscreen", DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		config.set_value("video", "fullscreen", DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	config.save(SETTINGS_FILE_PATH)
+	
+func is_fullscreen():
+	return get_window_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+func get_music_volume():
+	return config.get_value("audio", "music_volume")
+	
+func set_music_volume(volume: float):
+	config.set_value("audio", "music_volume", volume)
+	config.save(SETTINGS_FILE_PATH)
+
+func get_sfx_volume():
+	return config.get_value("audio", "sfx_volume")
+	
+func set_sfx_volume(volume: float):
+	config.set_value("audio", "sfx_volume", volume)
+	config.save(SETTINGS_FILE_PATH)

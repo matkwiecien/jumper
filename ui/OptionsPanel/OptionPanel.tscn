@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://botwy0gxhhq5a"]
 
 [ext_resource type="Script" uid="uid://ch8c1t388h575" path="res://ui/OptionsPanel/option_panel.gd" id="1_2lhws"]
+[ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="2_ls1u4"]
 
 [node name="OptionPanel" type="Control" unique_id=427747215]
 layout_mode = 3
@@ -15,6 +16,7 @@ script = ExtResource("1_2lhws")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_ls1u4")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1657131503]
 layout_mode = 2
@@ -27,4 +29,18 @@ layout_mode = 2
 text = "
 "
 
+[node name="MusicVolume" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=63426150]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="SFXVolume" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2071494085]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
 [connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
