@@ -2,45 +2,103 @@
 
 [ext_resource type="Script" uid="uid://ch8c1t388h575" path="res://ui/OptionsPanel/option_panel.gd" id="1_2lhws"]
 [ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="2_ls1u4"]
+[ext_resource type="FontFile" uid="uid://xwsmq3qg1yj0" path="res://Assets/fonts/PixelifySans-VariableFont_wght.ttf" id="3_7m4vj"]
+[ext_resource type="PackedScene" uid="uid://j055yhuuefif" path="res://ui/Components/Checkbox/FocusableCheckbox.tscn" id="3_tjpbr"]
+[ext_resource type="PackedScene" uid="uid://vhpuxtl5q75g" path="res://ui/OptionsPanel/MasterVolume/MasterVolume.tscn" id="4_etgtm"]
+[ext_resource type="PackedScene" uid="uid://dh5s2elpyr5js" path="res://ui/OptionsPanel/MusicVolume/MusicVolume.tscn" id="5_q8t6p"]
+[ext_resource type="PackedScene" uid="uid://dk4e2ydbf2rfa" path="res://ui/OptionsPanel/SFXVolume/SFXVolume.tscn" id="6_q8t6p"]
+[ext_resource type="PackedScene" uid="uid://ckbt4sqbfh0ky" path="res://ui/Components/Labels/FocusableLabel.tscn" id="6_v1glw"]
+[ext_resource type="Texture2D" uid="uid://b0848vhll6lrb" path="res://ui/Components/Buttons/Arts/back_btn_focus.png" id="12_vnbqq"]
 
-[node name="OptionPanel" type="Control" unique_id=427747215]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_2lhws")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2ktu"]
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1539067263]
-layout_mode = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76ld6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vnbqq"]
+content_margin_left = 0.0
+content_margin_right = 0.0
+texture = ExtResource("12_vnbqq")
+region_rect = Rect2(22, 0, 41, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcy8f"]
+texture = ExtResource("12_vnbqq")
+region_rect = Rect2(22, 0, 41, 32)
+
+[node name="OptionPanel" type="PanelContainer" unique_id=1539067263]
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_ls1u4")
+script = ExtResource("1_2lhws")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1657131503]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1657131503]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_right = 22
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=498923129]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FullscreenCheckBox" parent="MarginContainer/VBoxContainer" unique_id=1136852838 instance=ExtResource("3_tjpbr")]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="MuteOnFocusLoss" parent="MarginContainer/VBoxContainer" unique_id=1469733208 instance=ExtResource("3_tjpbr")]
+layout_mode = 2
+text = "Mute on focus loss"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=130088907]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="MasterVolumeLabel" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1304494560 instance=ExtResource("6_v1glw")]
+layout_mode = 2
+text = "Master volume"
+
+[node name="MasterVolume" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1554694316 instance=ExtResource("4_etgtm")]
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=498923129]
+[node name="MusicVolumeLabel" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1944374914 instance=ExtResource("6_v1glw")]
+layout_mode = 2
+text = "Music volume"
+
+[node name="MusicVolume" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=661136775 instance=ExtResource("5_q8t6p")]
 layout_mode = 2
 
-[node name="FullscreenCheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1399299384]
+[node name="SFXVolumeLabel" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=1677784340 instance=ExtResource("6_v1glw")]
 layout_mode = 2
-text = "
-"
+text = "SFX volume"
 
-[node name="MusicVolume" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=63426150]
+[node name="SFXVolume" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=469091729 instance=ExtResource("6_q8t6p")]
 layout_mode = 2
-max_value = 1.0
-step = 0.1
-value = 0.5
 
-[node name="SFXVolume" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2071494085]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1947122237]
 layout_mode = 2
-max_value = 1.0
-step = 0.1
-value = 0.5
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_7m4vj")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s2ktu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_76ld6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vnbqq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gcy8f")
+text = "Back"
+alignment = 0
 
-[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/MusicVolume" to="." method="_on_music_volume_value_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/MuteOnFocusLoss" to="." method="_on_mute_on_focus_loss_toggled"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/GridContainer/MasterVolume" to="MarginContainer/VBoxContainer/GridContainer/MasterVolumeLabel" method="focus"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer/GridContainer/MasterVolume" to="MarginContainer/VBoxContainer/GridContainer/MasterVolumeLabel" method="unfocus"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/GridContainer/MusicVolume" to="MarginContainer/VBoxContainer/GridContainer/MusicVolumeLabel" method="focus"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer/GridContainer/MusicVolume" to="MarginContainer/VBoxContainer/GridContainer/MusicVolumeLabel" method="unfocus"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/GridContainer/SFXVolume" to="MarginContainer/VBoxContainer/GridContainer/SFXVolumeLabel" method="focus"]
+[connection signal="focus_exited" from="MarginContainer/VBoxContainer/GridContainer/SFXVolume" to="MarginContainer/VBoxContainer/GridContainer/SFXVolumeLabel" method="unfocus"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ckbt4sqbfh0ky"]
+
+[ext_resource type="Script" uid="uid://bivnrf1fnordc" path="res://ui/Components/Labels/focusable_label.gd" id="1_ln15g"]
+[ext_resource type="LabelSettings" uid="uid://dhtqe7wyj5c0m" path="res://ui/OptionsPanel/font_settings.tres" id="1_m3ebe"]
+
+[node name="FocusableLabel" type="VBoxContainer" unique_id=1304494560]
+custom_minimum_size = Vector2(0, 24)
+offset_right = 91.0
+offset_bottom = 23.0
+theme_override_constants/separation = 2
+script = ExtResource("1_ln15g")
+text = "ddsds"
+
+[node name="Label" type="Label" parent="." unique_id=849732387]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "ddsds"
+label_settings = ExtResource("1_m3ebe")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1526391593]
+visible = false
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2

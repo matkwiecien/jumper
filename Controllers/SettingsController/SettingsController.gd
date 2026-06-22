@@ -9,6 +9,8 @@ func _ready() -> void:
 		config.set_value("video", "fullscreen",  DisplayServer.WINDOW_MODE_FULLSCREEN)
 		config.set_value("audio", "music_volume",  0.5)
 		config.set_value("audio", "sfx_volume",  0.5)
+		config.set_value("audio", "mute_on_focus_loss",  true)
+		config.set_value("audio", "master_volume",  0.5)
 		config.save(SETTINGS_FILE_PATH)
 	else:
 		config.load(SETTINGS_FILE_PATH)
@@ -43,4 +45,18 @@ func get_sfx_volume():
 	
 func set_sfx_volume(volume: float):
 	config.set_value("audio", "sfx_volume", volume)
+	config.save(SETTINGS_FILE_PATH)
+	
+func get_mute_on_focus_loss():
+	return config.get_value("audio", "mute_on_focus_loss")
+	
+func set_mute_on_focus_loss(mute: bool):
+	config.set_value("audio", "mute_on_focus_loss", mute)
+	config.save(SETTINGS_FILE_PATH)
+	
+func get_master_volume():
+	return config.get_value("audio", "master_volume")
+	
+func set_master_volume(volume: float):
+	config.set_value("audio", "master_volume", volume)
 	config.save(SETTINGS_FILE_PATH)
