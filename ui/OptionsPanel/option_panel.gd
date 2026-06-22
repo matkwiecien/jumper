@@ -10,6 +10,8 @@ func _ready() -> void:
 	fullscreen_check_box.button_pressed = SettingsController.is_fullscreen()
 	mute_on_focus_loss.button_pressed = SettingsController.get_mute_on_focus_loss()
 	
+	AudioController.mute_on_focus_loose = SettingsController.get_mute_on_focus_loss()
+
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 	SettingsController.set_fullscreen(toggled_on)
 
@@ -18,6 +20,7 @@ func _on_back_button_pressed() -> void:
 
 func _on_mute_on_focus_loss_toggled(toggled_on: bool) -> void:
 	SettingsController.set_mute_on_focus_loss(toggled_on)
+	AudioController.mute_on_focus_loose = toggled_on
 
 func init_focus():
 	fullscreen_check_box.focus()

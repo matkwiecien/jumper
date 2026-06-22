@@ -1,5 +1,8 @@
 extends Node
 
+signal settings_loaded()
+
+var loaded: bool = false
 var config =  ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
 
@@ -12,8 +15,12 @@ func _ready() -> void:
 		config.set_value("audio", "mute_on_focus_loss",  true)
 		config.set_value("audio", "master_volume",  0.5)
 		config.save(SETTINGS_FILE_PATH)
+		loaded = true
+		settings_loaded.emit()
 	else:
-		config.load(SETTINGS_FILE_PATH)
+		config.load(SETTINGS_FILE_PATH)		
+		loaded = true
+		settings_loaded.emit()
 	
 		
 func save_settings():
@@ -31,9 +38,15 @@ func set_fullscreen(toggle_on: bool):
 	config.save(SETTINGS_FILE_PATH)
 	
 func is_fullscreen():
-	return get_window_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	if not loaded:
+		print("not loaded")
+		
+	return config.get_value("video", "fullscreen")
 	
 func get_music_volume():
+	if not loaded:
+		print("not loaded")
+		
 	return config.get_value("audio", "music_volume")
 	
 func set_music_volume(volume: float):
@@ -41,6 +54,9 @@ func set_music_volume(volume: float):
 	config.save(SETTINGS_FILE_PATH)
 
 func get_sfx_volume():
+	if not loaded:
+		print("not loaded")
+		
 	return config.get_value("audio", "sfx_volume")
 	
 func set_sfx_volume(volume: float):
@@ -48,6 +64,9 @@ func set_sfx_volume(volume: float):
 	config.save(SETTINGS_FILE_PATH)
 	
 func get_mute_on_focus_loss():
+	if not loaded:
+		print("not loaded")
+	
 	return config.get_value("audio", "mute_on_focus_loss")
 	
 func set_mute_on_focus_loss(mute: bool):
@@ -55,6 +74,9 @@ func set_mute_on_focus_loss(mute: bool):
 	config.save(SETTINGS_FILE_PATH)
 	
 func get_master_volume():
+	if not loaded:
+		print("not loaded")
+		
 	return config.get_value("audio", "master_volume")
 	
 func set_master_volume(volume: float):

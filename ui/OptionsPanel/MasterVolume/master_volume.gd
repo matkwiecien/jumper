@@ -6,3 +6,4 @@ func _ready() -> void:
 
 func _on_master_volume_value_changed(value: float) -> void:
 	SettingsController.set_master_volume(value)
+	AudioController.set_master_volume(value)

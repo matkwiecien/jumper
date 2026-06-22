@@ -6,3 +6,4 @@ func _ready() -> void:
 
 func _on_sfx_volume_value_changed(value: float) -> void:
 	SettingsController.set_sfx_volume(value)
+	AudioController.set_sfx_volume(value)

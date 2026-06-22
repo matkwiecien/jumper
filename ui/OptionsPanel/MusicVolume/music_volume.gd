@@ -6,3 +6,4 @@ func _ready() -> void:
 
 func _on_music_volume_value_changed(value: float) -> void:
 	SettingsController.set_music_volume(value)
+	AudioController.set_music_volume(value)
