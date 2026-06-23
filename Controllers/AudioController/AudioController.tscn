@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://4jiufd1cgq7w" path="res://Enity/Enemy/Arts/PUNCH_DESIGNED_HEAVY_23.wav" id="6_3udx5"]
 
 [node name="AudioController" type="Node" unique_id=214630401]
+process_mode = 3
 script = ExtResource("1_chtim")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=490212745]

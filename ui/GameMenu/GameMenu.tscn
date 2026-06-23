@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://obk02amhiaa3"]
+
+[ext_resource type="Script" uid="uid://biwrvg40s1ibj" path="res://ui/GameMenu/game_menu.gd" id="1_g8eme"]
+[ext_resource type="Texture2D" uid="uid://dr3284ibxxc7f" path="res://Assets/Branding/logo-big.png" id="1_ng1ce"]
+[ext_resource type="Theme" uid="uid://767yburb0w27" path="res://ui/themes/theme.tres" id="2_g8eme"]
+[ext_resource type="PackedScene" uid="uid://botwy0gxhhq5a" path="res://ui/OptionsPanel/OptionPanel.tscn" id="4_cyo1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jo1rj"]
+
+[node name="GameMenu" type="MarginContainer" unique_id=2009396019]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g8eme")
+
+[node name="GameMenu" type="VBoxContainer" parent="." unique_id=1034045861]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Logo" type="TextureRect" parent="GameMenu" unique_id=752138657]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ng1ce")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameMenu" unique_id=1650552118]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MenuPanel" type="PanelContainer" parent="GameMenu/MarginContainer" unique_id=1490536237]
+layout_mode = 2
+theme = ExtResource("2_g8eme")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/MarginContainer/MenuPanel" unique_id=86929797]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResumeButton" type="Button" parent="GameMenu/MarginContainer/MenuPanel/VBoxContainer" unique_id=1173230660]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("2_g8eme")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jo1rj")
+text = "Resume"
+
+[node name="Options" type="Button" parent="GameMenu/MarginContainer/MenuPanel/VBoxContainer" unique_id=1374208084]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("2_g8eme")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jo1rj")
+text = "Options
+"
+
+[node name="Exit" type="Button" parent="GameMenu/MarginContainer/MenuPanel/VBoxContainer" unique_id=599580668]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = ExtResource("2_g8eme")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jo1rj")
+text = "Exit
+
+"
+
+[node name="OptionPanelContainer" type="VBoxContainer" parent="." unique_id=70439912]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="TextureRect2" type="TextureRect" parent="OptionPanelContainer" unique_id=733376212]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ng1ce")
+stretch_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="OptionPanelContainer" unique_id=719262534]
+layout_mode = 2
+theme_override_constants/margin_bottom = 48
+
+[node name="OptionPanel" parent="OptionPanelContainer/MarginContainer2" unique_id=1539067263 instance=ExtResource("4_cyo1s")]
+layout_mode = 2
+
+[connection signal="pressed" from="GameMenu/MarginContainer/MenuPanel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GameMenu/MarginContainer/MenuPanel/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="GameMenu/MarginContainer/MenuPanel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="back_clicked" from="OptionPanelContainer/MarginContainer2/OptionPanel" to="." method="_on_option_panel_back_clicked"]

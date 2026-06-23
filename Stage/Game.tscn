@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bmgp2cffaevtl" path="res://ui/Instructions/Art/restart_instruction-Sheet.png" id="22_jo1rj"]
 [ext_resource type="Texture2D" uid="uid://cmj0303tyukd4" path="res://ui/Instructions/Art/start_instruction-Sheet.png" id="22_ww05r"]
 [ext_resource type="PackedScene" uid="uid://di52bvcruplwy" path="res://ui/GameOverStagePopup/GameOverStagePopup.tscn" id="24_2nmls"]
+[ext_resource type="PackedScene" uid="uid://obk02amhiaa3" path="res://ui/GameMenu/GameMenu.tscn" id="27_jo1rj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo1rj"]
 atlas = ExtResource("22_ww05r")
@@ -135,10 +136,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = 7.0
-offset_right = -4.0
-offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -172,6 +169,17 @@ offset_left = 7.0
 offset_top = -126.0
 offset_right = 7.0
 offset_bottom = -126.0
+
+[node name="MainRoot" type="MarginContainer" parent="CanvasLayer" unique_id=155482373]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameMenu" parent="CanvasLayer/MainRoot" unique_id=1034045861 instance=ExtResource("27_jo1rj")]
+process_mode = 3
+layout_mode = 2
 
 [connection signal="game_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_game_time_changed"]
 [connection signal="stage_stopped" from="GameNode/StageManager" to="GameNode/GameStateManager" method="_on_stage_stopped"]

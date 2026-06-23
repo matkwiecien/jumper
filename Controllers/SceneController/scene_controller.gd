@@ -15,6 +15,7 @@ var level_parameters := {
 }
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	set_process(false)
 	
 func load_scene(_scene_path: String) ->void:

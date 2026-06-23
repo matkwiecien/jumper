@@ -6,6 +6,13 @@ var loaded: bool = false
 var config =  ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
 
+
+
+var override_config =  ConfigFile.new()
+
+const PROJECT_SETTINGS_OVERWRITE_FILE_PATH = "user://override.cfg"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not FileAccess.file_exists(SETTINGS_FILE_PATH):
@@ -21,27 +28,31 @@ func _ready() -> void:
 		config.load(SETTINGS_FILE_PATH)		
 		loaded = true
 		settings_loaded.emit()
-	
+		
+	if not FileAccess.file_exists(PROJECT_SETTINGS_OVERWRITE_FILE_PATH):
+		override_config.set_value("display", "window/size/mode",  DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		override_config.load(PROJECT_SETTINGS_OVERWRITE_FILE_PATH)		
 		
 func save_settings():
 	config.save(SETTINGS_FILE_PATH)
 
 func get_window_mode():
-	return config.get_value("video", "fullscreen")
+	return override_config.get_value("display", "window/size/mode")
 
 func set_fullscreen(toggle_on: bool):
 	if toggle_on:
-		config.set_value("video", "fullscreen", DisplayServer.WINDOW_MODE_FULLSCREEN)
+		override_config.set_value("display", "window/size/mode", DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
-		config.set_value("video", "fullscreen", DisplayServer.WINDOW_MODE_WINDOWED)
+		override_config.set_value("display", "window/size/mode", DisplayServer.WINDOW_MODE_WINDOWED)
 	
-	config.save(SETTINGS_FILE_PATH)
+	override_config.save(PROJECT_SETTINGS_OVERWRITE_FILE_PATH)
 	
 func is_fullscreen():
 	if not loaded:
 		print("not loaded")
 		
-	return config.get_value("video", "fullscreen")
+	return override_config.get_value("display", "window/size/mode") == DisplayServer.WINDOW_MODE_FULLSCREEN
 	
 func get_music_volume():
 	if not loaded:

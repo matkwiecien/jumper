@@ -14,6 +14,10 @@ func _ready() -> void:
 
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 	SettingsController.set_fullscreen(toggled_on)
+	if toggled_on:
+		VideoController.set_window_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		VideoController.set_window_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 func _on_back_button_pressed() -> void:
 	back_clicked.emit()

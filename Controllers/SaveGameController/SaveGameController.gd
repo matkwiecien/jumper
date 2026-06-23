@@ -19,3 +19,6 @@ func load_game() -> SaveGame:
 	   
 func has_saved_game():
 	return ResourceLoader.exists(SAVE_PATH)
+
+
+	

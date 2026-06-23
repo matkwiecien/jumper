@@ -52,7 +52,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/MainMenuContainer" unique_id=1543806700]
+[node name="Logo" type="TextureRect" parent="MarginContainer/MainMenuContainer" unique_id=1543806700]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -73,17 +73,18 @@ theme = ExtResource("2_405my")
 layout_mode = 2
 theme_override_constants/separation = 8
 
+[node name="ContinueBtn" type="TextureButton" parent="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1084426509]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("4_wlwnj")
+texture_hover = ExtResource("8_0xady")
+texture_focused = ExtResource("9_en2kh")
+
 [node name="NewGameBtn" type="TextureButton" parent="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=422998161]
 layout_mode = 2
 texture_normal = ExtResource("3_hur4r")
 texture_hover = ExtResource("5_5lojo")
 texture_focused = ExtResource("5_7bcsq")
-
-[node name="ContinueBtn" type="TextureButton" parent="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=1084426509]
-layout_mode = 2
-texture_normal = ExtResource("4_wlwnj")
-texture_hover = ExtResource("8_0xady")
-texture_focused = ExtResource("9_en2kh")
 
 [node name="OptionsBtn" type="TextureButton" parent="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer" unique_id=92781950]
 layout_mode = 2
@@ -117,8 +118,8 @@ theme_override_constants/margin_bottom = 48
 [node name="OptionPanel" parent="MarginContainer/OptionPanelContainer/MarginContainer2" unique_id=427747215 instance=ExtResource("17_ioryt")]
 layout_mode = 2
 
-[connection signal="pressed" from="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer/NewGameBtn" to="." method="_on_new_game_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer/OptionsBtn" to="." method="_on_options_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_pressed"]
 [connection signal="back_clicked" from="MarginContainer/OptionPanelContainer/MarginContainer2/OptionPanel" to="." method="_on_option_panel_back_clicked"]

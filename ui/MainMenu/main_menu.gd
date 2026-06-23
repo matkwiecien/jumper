@@ -7,9 +7,14 @@ class_name MainMenu
 @onready var main_menu_container: VBoxContainer = $MarginContainer/MainMenuContainer
 @onready var option_panel_container: VBoxContainer = $MarginContainer/OptionPanelContainer
 @onready var option_panel: PanelContainer = $MarginContainer/OptionPanelContainer/MarginContainer2/OptionPanel
+@onready var continue_btn: TextureButton = $MarginContainer/MainMenuContainer/MarginContainer/PanelContainer/VBoxContainer/ContinueBtn
 
 func _ready() -> void:
-	new_game_btn.grab_focus()
+	if SaveGameController.has_saved_game():
+		continue_btn.grab_focus()
+		continue_btn.show()
+	else:
+		new_game_btn.grab_focus()
 	
 
 	
