@@ -11,9 +11,7 @@ func init_menu_panel():
 	resume_button.grab_focus()
 	
 func _input(event: InputEvent) -> void:	
-	
 	if event.is_action_pressed("Menu"):		
-		print("dsaadasd")
 		if game_menu.visible:
 			hide_menu()
 		else:
@@ -22,11 +20,13 @@ func _input(event: InputEvent) -> void:
 func hide_menu():
 	game_menu.visible = false
 	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 func show_menu():
 	game_menu.visible = true
 	get_tree().paused = true
 	init_menu_panel()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _on_resume_button_pressed() -> void:

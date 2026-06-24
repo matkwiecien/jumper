@@ -30,11 +30,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo1rj"]
 atlas = ExtResource("22_ww05r")
-region = Rect2(0, 0, 128, 32)
+region = Rect2(0, 0, 96, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iusmo"]
 atlas = ExtResource("22_ww05r")
-region = Rect2(128, 0, 128, 32)
+region = Rect2(96, 0, 96, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ncq44"]
 animations = [{
@@ -52,11 +52,11 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncq44"]
 atlas = ExtResource("22_jo1rj")
-region = Rect2(0, 0, 88, 22)
+region = Rect2(0, 0, 112, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8suk"]
 atlas = ExtResource("22_jo1rj")
-region = Rect2(88, 0, 88, 22)
+region = Rect2(112, 0, 112, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rh7m"]
 animations = [{
@@ -74,7 +74,6 @@ animations = [{
 
 [node name="Game" type="Node" unique_id=369595640 node_paths=PackedStringArray("player")]
 script = ExtResource("1_pkj63")
-players_default_lifes = 1
 player = NodePath("GameNode/Player")
 wave_start_index = 5
 
@@ -145,7 +144,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 11
 
-[node name="LifeSummary" parent="CanvasLayer/Control/VBoxContainer" unique_id=312467933 instance=ExtResource("17_n1yqa")]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1503109610]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="LifeSummary" parent="CanvasLayer/Control/VBoxContainer/MarginContainer" unique_id=312467933 instance=ExtResource("17_n1yqa")]
 layout_mode = 2
 
 [node name="GameProgress" parent="CanvasLayer/Control" unique_id=511945595 instance=ExtResource("16_0chl7")]
@@ -181,9 +185,23 @@ grow_vertical = 2
 process_mode = 3
 layout_mode = 2
 
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=510142433]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control2" unique_id=1969420634]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 51.0
+offset_right = 52.0
+offset_bottom = 332.0
+fill_mode = 3
+
 [connection signal="game_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_game_time_changed"]
 [connection signal="stage_stopped" from="GameNode/StageManager" to="GameNode/GameStateManager" method="_on_stage_stopped"]
 [connection signal="stage_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_stage_time_changed"]
-[connection signal="lifes_change" from="GameNode/Player" to="CanvasLayer/Control/VBoxContainer/LifeSummary" method="_update_lifes"]
+[connection signal="lifes_change" from="GameNode/Player" to="CanvasLayer/Control/VBoxContainer/MarginContainer/LifeSummary" method="_update_lifes"]
 [connection signal="player_dead" from="GameNode/Player" to="GameNode/GameStateManager" method="_on_player_dead"]
 [connection signal="next_button_pressed" from="CanvasLayer/Control/SatgeCompletedPopup" to="GameNode/GameStateManager" method="_on_next_stage_clicked"]

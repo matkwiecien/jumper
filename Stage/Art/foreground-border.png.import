@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cldmmik5bgje2"
-path="res://.godot/imported/foreground-border-repeat.png-46790f23ee3006111da17af1e8c83edc.ctex"
+uid="uid://bbwinr5pyru4t"
+path="res://.godot/imported/foreground-border.png-0e56a679985cf84fcaacd0d7c55dc1f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/projects/foreground-border-repeat.png"
-dest_files=["res://.godot/imported/foreground-border-repeat.png-46790f23ee3006111da17af1e8c83edc.ctex"]
+source_file="res://Stage/Art/foreground-border.png"
+dest_files=["res://.godot/imported/foreground-border.png-0e56a679985cf84fcaacd0d7c55dc1f8.ctex"]
 
 [params]
 

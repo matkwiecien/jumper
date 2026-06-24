@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://1qxe5ufl4ydi"]
+
+[node name="StartInstruction" type="RichTextLabel" unique_id=1778287244]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "Press [img=b]uid://d21xh82lnfpac[/img] to start"
