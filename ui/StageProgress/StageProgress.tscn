@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://6m23tg1knjbd"]
+
+[ext_resource type="Script" uid="uid://cly3v8jwrs5hy" path="res://ui/StageProgress/stage_progress.gd" id="1_ootbh"]
+[ext_resource type="PackedScene" uid="uid://bsk1t71tisgl5" path="res://ui/StageProgress/Components/WaveProgress/WaveProgress.tscn" id="2_kvngc"]
+[ext_resource type="PackedScene" uid="uid://crndnm0dknjgt" path="res://ui/StageProgress/Components/WaveIcon/WaveIcon.tscn" id="3_tm22r"]
+
+[node name="StageProgress" type="VBoxContainer" unique_id=2110034158]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+offset_bottom = 280.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+script = ExtResource("1_ootbh")
+wave_progress_scene = ExtResource("2_kvngc")
+wave_icon_scene = ExtResource("3_tm22r")

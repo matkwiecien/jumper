@@ -29,9 +29,9 @@ func _load_last_saved_game() -> void:
 func _on_stage_end():
 	stage_manager.next_stage()
 	SaveGameController.save_game(stage_manager.current_wave_index, player.lifes)
-
-func _enter_tree() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	
-func _exit_tree() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+#
+#func _enter_tree() -> void:
+	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	#
+#func _exit_tree() -> void:
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

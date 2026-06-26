@@ -12,6 +12,7 @@ signal stage_stopped()
 
 @export var stages: Array[Stage] = []
 @export var enemy_wave_generator: EnemyWaveGenerator
+@export var stage_progress: StageProgress
 
 @export var current_stage_index: int = 0
 @export var current_wave_index: int = 0
@@ -25,7 +26,9 @@ var game_time: float = 0:
 		game_time_changed.emit(game_time)
 		
 	
-
+func get_current_stage() -> Stage:
+	return stages[current_stage_index]
+	
 func get_current_waves() -> Array[WaveStrategy]:
 	return stages[current_stage_index].waves
 
@@ -59,8 +62,9 @@ func next_stage():
 	
 func load_wave_by_index(index: int):
 	var waves = get_current_waves()
-	game_time = 0
 	current_wave_index = index
+	stage_progress.wave_index = index
+	game_time = 0
 	enemy_wave_generator.init_wave(waves[current_wave_index] )
 	stage_time_changed.emit(waves[current_wave_index].wave_time)
 	
@@ -70,6 +74,9 @@ func load_stage_by_index(stage_index: int, wave_index: int):
 	var waves = get_current_waves()
 	enemy_wave_generator.init_wave(waves[current_wave_index] )
 	stage_time_changed.emit(waves[current_wave_index].wave_time)
+	
+	if stage_progress:
+		stage_progress.load_stage(get_current_stage())
 
 func _process(delta: float) -> void:
 	if stage_state == STAGE_STATE.STAGE_STOPPED:
@@ -77,6 +84,7 @@ func _process(delta: float) -> void:
 	
 	game_time += delta
 	enemy_wave_generator.game_time = game_time
+	stage_progress.update_game_time(game_time)
 	
 	if is_wave_timeouted():
 		next_wave()

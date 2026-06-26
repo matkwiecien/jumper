@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://kr3143dk3yqo" path="res://Enity/Leaf/Leaf.tscn" id="13_mb873"]
 [ext_resource type="PackedScene" uid="uid://fywepodkk5hi" path="res://Enity/World/World.tscn" id="14_s7joj"]
 [ext_resource type="PackedScene" uid="uid://6wb4ev4vyh0r" path="res://Controllers/EnemyWaveGenerator/EnemyWaveGenerator.tscn" id="15_ukfyb"]
-[ext_resource type="PackedScene" uid="uid://dmkq2dcm7to8c" path="res://ui/GameProgress/GameProgress.tscn" id="16_0chl7"]
 [ext_resource type="PackedScene" uid="uid://do0765e5xxbnt" path="res://ui/WinPanel/WinPanel.tscn" id="16_8myfo"]
 [ext_resource type="PackedScene" uid="uid://bjuyel1it37w8" path="res://ui/WinPanel/LifeSummary/LifeSummary.tscn" id="17_n1yqa"]
 [ext_resource type="Script" uid="uid://cgt05tnipliv" path="res://Controllers/StagesManager/Stage.gd" id="18_beav1"]
@@ -26,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bmgp2cffaevtl" path="res://ui/Instructions/Art/restart_instruction-Sheet.png" id="22_jo1rj"]
 [ext_resource type="Texture2D" uid="uid://cmj0303tyukd4" path="res://ui/Instructions/Art/start_instruction-Sheet.png" id="22_ww05r"]
 [ext_resource type="PackedScene" uid="uid://di52bvcruplwy" path="res://ui/GameOverStagePopup/GameOverStagePopup.tscn" id="24_2nmls"]
+[ext_resource type="PackedScene" uid="uid://6m23tg1knjbd" path="res://ui/StageProgress/StageProgress.tscn" id="24_iusmo"]
 [ext_resource type="PackedScene" uid="uid://obk02amhiaa3" path="res://ui/GameMenu/GameMenu.tscn" id="27_jo1rj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo1rj"]
@@ -75,16 +75,16 @@ animations = [{
 [node name="Game" type="Node" unique_id=369595640 node_paths=PackedStringArray("player")]
 script = ExtResource("1_pkj63")
 player = NodePath("GameNode/Player")
-wave_start_index = 5
 
 [node name="GameNode" type="Node2D" parent="." unique_id=1786847578]
 script = ExtResource("4_0chl7")
 
 [node name="GameStateManager" parent="GameNode" unique_id=1159865182 instance=ExtResource("3_2nmls")]
 
-[node name="StageManager" parent="GameNode" unique_id=19900596 node_paths=PackedStringArray("enemy_wave_generator") instance=ExtResource("4_ukfyb")]
+[node name="StageManager" parent="GameNode" unique_id=19900596 node_paths=PackedStringArray("enemy_wave_generator", "stage_progress") instance=ExtResource("4_ukfyb")]
 stages = Array[ExtResource("18_beav1")]([ExtResource("19_26ipt"), ExtResource("20_c84y4"), ExtResource("21_fotbt"), ExtResource("8_n1yqa"), ExtResource("9_oyxvj"), ExtResource("10_ukfyb"), ExtResource("11_jo5wr"), ExtResource("12_j2e71")])
 enemy_wave_generator = NodePath("../EnemyWaveGenerator")
+stage_progress = NodePath("../../CanvasLayer/Control/VBoxContainer/MarginContainer2/StageProgress")
 
 [node name="Camera2D" type="Camera2D" parent="GameNode" unique_id=1880888886]
 limit_left = 0
@@ -95,7 +95,7 @@ limit_bottom = 360
 [node name="CanvasLayer" type="CanvasLayer" parent="GameNode" unique_id=1571137798]
 layer = -1
 
-[node name="Sprite2D2" type="Sprite2D" parent="GameNode/CanvasLayer" unique_id=1055624169]
+[node name="Background" type="Sprite2D" parent="GameNode/CanvasLayer" unique_id=1055624169]
 texture = ExtResource("4_s7joj")
 centered = false
 
@@ -139,9 +139,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=2046331822]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 60.0
+grow_vertical = 2
 theme_override_constants/separation = 11
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1503109610]
@@ -152,11 +154,15 @@ theme_override_constants/margin_top = 4
 [node name="LifeSummary" parent="CanvasLayer/Control/VBoxContainer/MarginContainer" unique_id=312467933 instance=ExtResource("17_n1yqa")]
 layout_mode = 2
 
-[node name="GameProgress" parent="CanvasLayer/Control" unique_id=511945595 instance=ExtResource("16_0chl7")]
-layout_mode = 0
-offset_left = 67.0
-offset_right = 580.0
-offset_bottom = 5.0
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1729446912]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 32
+
+[node name="StageProgress" parent="CanvasLayer/Control/VBoxContainer/MarginContainer2" unique_id=2101859508 instance=ExtResource("24_iusmo")]
+layout_mode = 2
 
 [node name="GameOverStagePopup" parent="CanvasLayer/Control" unique_id=1208923848 instance=ExtResource("24_2nmls")]
 visible = false
@@ -199,9 +205,7 @@ offset_right = 52.0
 offset_bottom = 332.0
 fill_mode = 3
 
-[connection signal="game_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_game_time_changed"]
 [connection signal="stage_stopped" from="GameNode/StageManager" to="GameNode/GameStateManager" method="_on_stage_stopped"]
-[connection signal="stage_time_changed" from="GameNode/StageManager" to="CanvasLayer/Control/GameProgress" method="_on_stage_time_changed"]
 [connection signal="lifes_change" from="GameNode/Player" to="CanvasLayer/Control/VBoxContainer/MarginContainer/LifeSummary" method="_update_lifes"]
 [connection signal="player_dead" from="GameNode/Player" to="GameNode/GameStateManager" method="_on_player_dead"]
 [connection signal="next_button_pressed" from="CanvasLayer/Control/SatgeCompletedPopup" to="GameNode/GameStateManager" method="_on_next_stage_clicked"]

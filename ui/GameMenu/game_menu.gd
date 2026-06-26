@@ -6,7 +6,6 @@ extends MarginContainer
 @onready var option_panel_container: VBoxContainer = $OptionPanelContainer
 @onready var option_panel: OptionPanel = $OptionPanelContainer/MarginContainer2/OptionPanel
 
-
 func init_menu_panel():
 	resume_button.grab_focus()
 	
