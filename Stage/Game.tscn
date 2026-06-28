@@ -29,6 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://di7dnn2cs1qx1" path="res://ui/StageProgress/Art/wave_icon.png" id="25_iusmo"]
 [ext_resource type="Texture2D" uid="uid://dhlk7mta2aw7l" path="res://ui/StageProgress/Art/wave_icon_success.png" id="26_ncq44"]
 [ext_resource type="PackedScene" uid="uid://obk02amhiaa3" path="res://ui/GameMenu/GameMenu.tscn" id="27_jo1rj"]
+[ext_resource type="LabelSettings" uid="uid://dhtqe7wyj5c0m" path="res://ui/OptionsPanel/font_settings.tres" id="29_26ipt"]
+[ext_resource type="Texture2D" uid="uid://e0ch03t60y17" path="res://ui/Arts/keys/left_key.png" id="30_c84y4"]
+[ext_resource type="Texture2D" uid="uid://be250gbertirs" path="res://ui/Arts/keys/esc_key.png" id="30_fotbt"]
+[ext_resource type="Texture2D" uid="uid://cp6frgobv3alh" path="res://ui/Arts/keys/right-key.png" id="31_fotbt"]
+[ext_resource type="Texture2D" uid="uid://byr10u0qmy14d" path="res://ui/Arts/keys/space_key.png" id="32_0ip1n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo1rj"]
 atlas = ExtResource("22_ww05r")
@@ -77,7 +82,6 @@ animations = [{
 [node name="Game" type="Node" unique_id=369595640 node_paths=PackedStringArray("player")]
 script = ExtResource("1_pkj63")
 player = NodePath("GameNode/Player")
-wave_start_index = 5
 
 [node name="HideMouseTimer" type="Timer" parent="." unique_id=1440949633]
 one_shot = true
@@ -189,6 +193,93 @@ offset_left = 7.0
 offset_top = -126.0
 offset_right = 7.0
 offset_bottom = -126.0
+
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=1790688230]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control2" unique_id=1648251453]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -54.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control2/MarginContainer" unique_id=1421196785]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2" unique_id=2090368974]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=606210486]
+layout_mode = 2
+text = "Menu"
+label_settings = ExtResource("29_26ipt")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer3" unique_id=1086288199]
+layout_mode = 2
+alignment = 1
+
+[node name="Esc" type="TextureRect" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer" unique_id=846914660]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("30_fotbt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2" unique_id=1892407225]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=222969019]
+layout_mode = 2
+text = "Move"
+label_settings = ExtResource("29_26ipt")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=127689672]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftKey" type="TextureRect" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1258009183]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("30_c84y4")
+
+[node name="RightKey" type="TextureRect" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=172773356]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("31_fotbt")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2" unique_id=954681392]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=412861407]
+layout_mode = 2
+text = "Fly"
+label_settings = ExtResource("29_26ipt")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer2" unique_id=1362950830]
+layout_mode = 2
+alignment = 1
+
+[node name="Space" type="TextureRect" parent="CanvasLayer/Control2/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer" unique_id=864024643]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("32_0ip1n")
 
 [node name="MainRoot" type="MarginContainer" parent="CanvasLayer" unique_id=155482373]
 anchors_preset = 15
