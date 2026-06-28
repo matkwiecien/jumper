@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://cmj0303tyukd4" path="res://ui/Instructions/Art/start_instruction-Sheet.png" id="22_ww05r"]
 [ext_resource type="PackedScene" uid="uid://di52bvcruplwy" path="res://ui/GameOverStagePopup/GameOverStagePopup.tscn" id="24_2nmls"]
 [ext_resource type="PackedScene" uid="uid://6m23tg1knjbd" path="res://ui/StageProgress/StageProgress.tscn" id="24_iusmo"]
+[ext_resource type="Texture2D" uid="uid://di7dnn2cs1qx1" path="res://ui/StageProgress/Art/wave_icon.png" id="25_iusmo"]
+[ext_resource type="Texture2D" uid="uid://dhlk7mta2aw7l" path="res://ui/StageProgress/Art/wave_icon_success.png" id="26_ncq44"]
 [ext_resource type="PackedScene" uid="uid://obk02amhiaa3" path="res://ui/GameMenu/GameMenu.tscn" id="27_jo1rj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo1rj"]
@@ -75,6 +77,10 @@ animations = [{
 [node name="Game" type="Node" unique_id=369595640 node_paths=PackedStringArray("player")]
 script = ExtResource("1_pkj63")
 player = NodePath("GameNode/Player")
+wave_start_index = 5
+
+[node name="HideMouseTimer" type="Timer" parent="." unique_id=1440949633]
+one_shot = true
 
 [node name="GameNode" type="Node2D" parent="." unique_id=1786847578]
 script = ExtResource("4_0chl7")
@@ -142,7 +148,7 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 60.0
+offset_right = 64.0
 grow_vertical = 2
 theme_override_constants/separation = 11
 
@@ -157,12 +163,16 @@ layout_mode = 2
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1729446912]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_right = 28
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 32
 
 [node name="StageProgress" parent="CanvasLayer/Control/VBoxContainer/MarginContainer2" unique_id=2101859508 instance=ExtResource("24_iusmo")]
 layout_mode = 2
+size_flags_horizontal = 4
+marker_texture = ExtResource("25_iusmo")
+marker_success_texture = ExtResource("26_ncq44")
+marker_texture_offset = Vector2(3, -1)
 
 [node name="GameOverStagePopup" parent="CanvasLayer/Control" unique_id=1208923848 instance=ExtResource("24_2nmls")]
 visible = false
@@ -191,20 +201,7 @@ grow_vertical = 2
 process_mode = 3
 layout_mode = 2
 
-[node name="Control2" type="Control" parent="CanvasLayer" unique_id=510142433]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control2" unique_id=1969420634]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 51.0
-offset_right = 52.0
-offset_bottom = 332.0
-fill_mode = 3
-
+[connection signal="timeout" from="HideMouseTimer" to="." method="_on_hide_mouse_timer_timeout"]
 [connection signal="stage_stopped" from="GameNode/StageManager" to="GameNode/GameStateManager" method="_on_stage_stopped"]
 [connection signal="lifes_change" from="GameNode/Player" to="CanvasLayer/Control/VBoxContainer/MarginContainer/LifeSummary" method="_update_lifes"]
 [connection signal="player_dead" from="GameNode/Player" to="GameNode/GameStateManager" method="_on_player_dead"]

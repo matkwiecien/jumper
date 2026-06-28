@@ -2,6 +2,7 @@ extends Resource
 class_name WaveStrategy
 
 @export var init_wave_delay_time: float = 1.5
+
 @export var time_between_waves_min: float = 1.5
 @export var time_between_waves_max: float = 2.5
 
@@ -93,9 +94,12 @@ func calc_expected_speed(time: float) -> float:
 	var max_time = min(wave_time, params_maximization_time)
 	var progress_percent = calc_progress(time)
 	
-		
 	return start_speed + progress_percent * speed_diff
 	
 func calc_progress(time: float):
 	var max_time = min(wave_time, params_maximization_time)
 	return min(time / max_time, 1)
+	
+func get_last_wave_fly_time():
+
+	return 640 / end_speed

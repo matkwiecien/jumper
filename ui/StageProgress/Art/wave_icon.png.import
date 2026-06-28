@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gjuuc34oif2d"
-path="res://.godot/imported/wave_progress_over.png-d259a9c04054bb1bc1c71d7eae61442d.ctex"
+uid="uid://di7dnn2cs1qx1"
+path="res://.godot/imported/wave_icon.png-15181bb070951fd9dbad0f3b26d762dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/StageProgress/Components/WaveProgress/Art/wave_progress_over.png"
-dest_files=["res://.godot/imported/wave_progress_over.png-d259a9c04054bb1bc1c71d7eae61442d.ctex"]
+source_file="res://ui/StageProgress/Art/wave_icon.png"
+dest_files=["res://.godot/imported/wave_icon.png-15181bb070951fd9dbad0f3b26d762dc.ctex"]
 
 [params]
 

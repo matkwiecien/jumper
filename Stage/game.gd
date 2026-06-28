@@ -9,6 +9,9 @@ extends Node
 @onready var game_node: Node2D = $GameNode
 @onready var win_panel: Control = $CanvasLayer/Control/WinPanel
 @onready var stage_manager: StageManager = $GameNode/StageManager
+@onready var hide_mouse_timer: Timer = $HideMouseTimer
+
+
 
 func _ready() -> void:
 	
@@ -29,9 +32,11 @@ func _load_last_saved_game() -> void:
 func _on_stage_end():
 	stage_manager.next_stage()
 	SaveGameController.save_game(stage_manager.current_wave_index, player.lifes)
-#
-#func _enter_tree() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	#
-#func _exit_tree() -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		hide_mouse_timer.start()
+
+func _on_hide_mouse_timer_timeout() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

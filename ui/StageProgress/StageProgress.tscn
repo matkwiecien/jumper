@@ -1,17 +1,35 @@
 [gd_scene format=3 uid="uid://6m23tg1knjbd"]
 
 [ext_resource type="Script" uid="uid://cly3v8jwrs5hy" path="res://ui/StageProgress/stage_progress.gd" id="1_ootbh"]
-[ext_resource type="PackedScene" uid="uid://bsk1t71tisgl5" path="res://ui/StageProgress/Components/WaveProgress/WaveProgress.tscn" id="2_kvngc"]
-[ext_resource type="PackedScene" uid="uid://crndnm0dknjgt" path="res://ui/StageProgress/Components/WaveIcon/WaveIcon.tscn" id="3_tm22r"]
 
-[node name="StageProgress" type="VBoxContainer" unique_id=2110034158]
-anchors_preset = 9
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ootbh"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15294118, 0.34509805, 0.54509807, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvngc"]
+bg_color = Color(0.4392157, 0.7058824, 0.84313726, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.15294118, 0.34509805, 0.54509807, 1)
+
+[node name="StageProgress" type="ProgressBar" unique_id=1772705847]
+custom_minimum_size = Vector2(6, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_right = 32.0
-offset_bottom = 280.0
+offset_left = -320.0
+offset_right = -314.0
+offset_bottom = -358.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ootbh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kvngc")
+fill_mode = 3
+show_percentage = false
 script = ExtResource("1_ootbh")
-wave_progress_scene = ExtResource("2_kvngc")
-wave_icon_scene = ExtResource("3_tm22r")

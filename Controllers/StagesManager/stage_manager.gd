@@ -57,26 +57,25 @@ func next_stage():
 		print("no more stages")
 		return 
 		
-	current_stage_index = new_stage_index
-	load_wave_by_index(0)
+	#current_stage_index = new_stage_index
+	load_stage_by_index(new_stage_index, 0)
 	
 func load_wave_by_index(index: int):
 	var waves = get_current_waves()
-	current_wave_index = index
-	stage_progress.wave_index = index
+	current_wave_index = index	
+	if stage_progress:
+		stage_progress.load_next_wave(index)
+	
 	game_time = 0
 	enemy_wave_generator.init_wave(waves[current_wave_index] )
 	stage_time_changed.emit(waves[current_wave_index].wave_time)
 	
 func load_stage_by_index(stage_index: int, wave_index: int):
 	current_stage_index = stage_index	
-	current_wave_index = wave_index
-	var waves = get_current_waves()
-	enemy_wave_generator.init_wave(waves[current_wave_index] )
-	stage_time_changed.emit(waves[current_wave_index].wave_time)
-	
 	if stage_progress:
-		stage_progress.load_stage(get_current_stage())
+		stage_progress.load_stage(stages[current_stage_index])
+	load_wave_by_index(wave_index)
+
 
 func _process(delta: float) -> void:
 	if stage_state == STAGE_STATE.STAGE_STOPPED:

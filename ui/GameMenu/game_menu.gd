@@ -19,13 +19,11 @@ func _input(event: InputEvent) -> void:
 func hide_menu():
 	game_menu.visible = false
 	get_tree().paused = false
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 func show_menu():
 	game_menu.visible = true
 	get_tree().paused = true
 	init_menu_panel()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _on_resume_button_pressed() -> void:

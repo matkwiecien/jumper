@@ -30,7 +30,6 @@ func get_top_segment():
 
 func create_wave(enemy_container: Node2D, game_time: float, _wave_count: int): 
 	var down_tick = _wave_count % 2 == 0
-	print(_wave_count, ' ', down_tick)
 	var tick_height = (valid_y_end - valid_y_start) - gap
 	var speed = calc_expected_speed(game_time)
 	
