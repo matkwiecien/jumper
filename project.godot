@@ -27,8 +27,6 @@ buses/default_bus_layout="uid://dv2gcmcqjk2x"
 
 [autoload]
 
-ScoreController="*res://Controllers/ScoreController/score_controller.gd"
-Helpers="*res://utils/helpers.gd"
 SceneController="*res://Controllers/SceneController/scene_controller.gd"
 AudioController="*res://Controllers/AudioController/AudioController.tscn"
 SaveGameController="*uid://cph4j85tit487"

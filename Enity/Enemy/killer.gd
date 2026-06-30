@@ -1,13 +1,8 @@
 class_name Killer extends Area2D
 
-@export var animation: AnimatedSprite2D
-
 @export var speed: float = 100
 
 var target_position: Vector2
-
-
-	
 
 func _physics_process(delta: float) -> void:	
 	global_position = global_position.move_toward(target_position, speed * delta)

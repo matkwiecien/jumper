@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bkfjir0eytmri"]
 
 [ext_resource type="Script" uid="uid://dge3yh86jua3k" path="res://Stage/game.gd" id="1_pkj63"]
-[ext_resource type="PackedScene" uid="uid://dse6a3nxq548p" path="res://Controllers/PlatformGenerator/PlatformGenerator.tscn" id="1_pltud"]
 [ext_resource type="PackedScene" uid="uid://drif6kohyhfuw" path="res://Enity/Player/Player.tscn" id="1_ub0g2"]
 [ext_resource type="PackedScene" uid="uid://djekiux38qwuv" path="res://Controllers/GameStateManager/GameStateManager.tscn" id="3_2nmls"]
 [ext_resource type="Script" uid="uid://cph4j85tit487" path="res://Controllers/SaveGameController/SaveGameController.gd" id="4_0chl7"]
@@ -11,9 +10,7 @@
 [ext_resource type="Resource" uid="uid://3l2fdheaegpb" path="res://Stage/data/Stages/UpAndDown.tres" id="9_oyxvj"]
 [ext_resource type="Resource" uid="uid://d1dajujswdama" path="res://Stage/data/Stages/Mess.tres" id="10_ukfyb"]
 [ext_resource type="Resource" uid="uid://cr1cf1v7nf8vc" path="res://Stage/data/Stages/SlowTunnel.tres" id="11_jo5wr"]
-[ext_resource type="PackedScene" uid="uid://bxyby0omg4cj5" path="res://Controllers/GameOverController/GameOverController.tscn" id="11_s7joj"]
 [ext_resource type="Resource" uid="uid://dc0enf3u6r6fr" path="res://Stage/data/Stages/FastTunnel.tres" id="12_j2e71"]
-[ext_resource type="PackedScene" uid="uid://kr3143dk3yqo" path="res://Enity/Leaf/Leaf.tscn" id="13_mb873"]
 [ext_resource type="PackedScene" uid="uid://fywepodkk5hi" path="res://Enity/World/World.tscn" id="14_s7joj"]
 [ext_resource type="PackedScene" uid="uid://6wb4ev4vyh0r" path="res://Controllers/EnemyWaveGenerator/EnemyWaveGenerator.tscn" id="15_ukfyb"]
 [ext_resource type="PackedScene" uid="uid://do0765e5xxbnt" path="res://ui/WinPanel/WinPanel.tscn" id="16_8myfo"]
@@ -82,6 +79,7 @@ animations = [{
 [node name="Game" type="Node" unique_id=369595640 node_paths=PackedStringArray("player")]
 script = ExtResource("1_pkj63")
 player = NodePath("GameNode/Player")
+wave_start_index = 5
 
 [node name="HideMouseTimer" type="Timer" parent="." unique_id=1440949633]
 one_shot = true
@@ -108,13 +106,6 @@ layer = -1
 [node name="Background" type="Sprite2D" parent="GameNode/CanvasLayer" unique_id=1055624169]
 texture = ExtResource("4_s7joj")
 centered = false
-
-[node name="PlatformGenerator" parent="GameNode" unique_id=1474367373 node_paths=PackedStringArray("camera") instance=ExtResource("1_pltud")]
-leaf_scene = ExtResource("13_mb873")
-camera = NodePath("../Camera2D")
-margin_top = 64.0
-
-[node name="GameOverController" parent="GameNode" unique_id=1901074815 instance=ExtResource("11_s7joj")]
 
 [node name="EnemyWaveGenerator" parent="GameNode" unique_id=990093254 instance=ExtResource("15_ukfyb")]
 

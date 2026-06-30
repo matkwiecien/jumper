@@ -13,6 +13,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):		
 		if game_menu.visible:
 			hide_menu()
+		elif option_panel_container.visible:
+			_on_option_panel_back_clicked()
 		else:
 			show_menu()
 

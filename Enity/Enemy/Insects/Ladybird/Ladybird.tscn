@@ -1,79 +1,17 @@
 [gd_scene format=3 uid="uid://cvj8brlqxscjs"]
 
 [ext_resource type="Script" uid="uid://c2frco1m35rrj" path="res://Enity/Enemy/Insects/Ladybird/ladybird.gd" id="1_j6qi5"]
-[ext_resource type="Texture2D" uid="uid://g6bjydfusd4w" path="res://Enity/Enemy/Arts/Explosion.png" id="3_sv3n0"]
-[ext_resource type="Texture2D" uid="uid://chba56hhwdck4" path="res://Enity/Enemy/Arts/killers.png" id="4_ry3tp"]
+[ext_resource type="Texture2D" uid="uid://cb0j7eyn4t33i" path="res://Enity/Enemy/Insects/Ladybird/Arts/ladybird.png" id="2_5bs1f"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mrl83"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_15vgu"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pqn3d"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ec8mb"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pl70"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y16ns"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7alv"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmq5w"]
-atlas = ExtResource("3_sv3n0")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_odi74"]
-atlas = ExtResource("4_ry3tp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf5am"]
+atlas = ExtResource("2_5bs1f")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lfshf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mrl83")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_15vgu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pqn3d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ec8mb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6pl70")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y16ns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t7alv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tmq5w")
-}],
-"loop": false,
-"name": &"explode",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odi74")
+"texture": SubResource("AtlasTexture_nf5am")
 }],
 "loop": true,
 "name": &"moving",
@@ -84,10 +22,9 @@ animations = [{
 radius = 2.5
 height = 8.0
 
-[node name="Ladybird" type="Area2D" unique_id=589074224 node_paths=PackedStringArray("animation")]
+[node name="Ladybird" type="Area2D" unique_id=589074224]
 collision_layer = 8
 script = ExtResource("1_j6qi5")
-animation = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=15286420]
 sprite_frames = SubResource("SpriteFrames_lfshf")
@@ -98,8 +35,6 @@ autoplay = "moving"
 position = Vector2(0, -0.5)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_8esuh")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1314462937]
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

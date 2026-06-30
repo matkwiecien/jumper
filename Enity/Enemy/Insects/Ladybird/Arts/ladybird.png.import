@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g6bjydfusd4w"
-path="res://.godot/imported/Explosion.png-01013b6918f3e233a3beb21722b879eb.ctex"
+uid="uid://cb0j7eyn4t33i"
+path="res://.godot/imported/ladybird.png-8c6161db5e6059c6c3c7d87c47dfdd7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enity/Enemy/Arts/Explosion.png"
-dest_files=["res://.godot/imported/Explosion.png-01013b6918f3e233a3beb21722b879eb.ctex"]
+source_file="res://Enity/Enemy/Insects/Ladybird/Arts/ladybird.png"
+dest_files=["res://.godot/imported/ladybird.png-8c6161db5e6059c6c3c7d87c47dfdd7f.ctex"]
 
 [params]
 

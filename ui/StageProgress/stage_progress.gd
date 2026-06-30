@@ -19,9 +19,7 @@ func load_next_wave(wave_index: int):
 	current_wave_max_time = current_stage.waves[wave_index].wave_time
 
 func load_stage(stage: Stage) -> void:
-	print("load stage")
 	current_stage = stage
-	
 	
 	max_value = stage.get_waves_total_time()
 	value = 0
@@ -33,9 +31,6 @@ func load_stage(stage: Stage) -> void:
 
 func update_game_time(time: float):
 	value = current_stage_time + min(time, current_wave_max_time)
-	print(current_stage_time)
-	print(time)
-	print(value)
 	
 func _draw() -> void:
 	var bar_height = size.y

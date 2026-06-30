@@ -57,8 +57,8 @@ func next_stage():
 		print("no more stages")
 		return 
 		
-	#current_stage_index = new_stage_index
 	load_stage_by_index(new_stage_index, 0)
+	SaveGameController.save_game(new_stage_index, 3)
 	
 func load_wave_by_index(index: int):
 	var waves = get_current_waves()

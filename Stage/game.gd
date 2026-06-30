@@ -11,10 +11,7 @@ extends Node
 @onready var stage_manager: StageManager = $GameNode/StageManager
 @onready var hide_mouse_timer: Timer = $HideMouseTimer
 
-
-
 func _ready() -> void:
-	
 	if SaveGameController.load_last_saved_stage:
 		_load_last_saved_game()
 	else:
